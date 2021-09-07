@@ -21,38 +21,46 @@ client.on("messageCreate", async (msg) => {
     console.log("no prefix");
     return;
   }
+  const userId = msg.author.id;
+
+  const botId = "883191824850776104";
+
   const args = msg.content.slice(prefix.length).trim().split(" ");
 
   const command = args.shift().toLowerCase();
 
-  if (command === "spell" || command === "spells") {
+  if (command === "spell") {
     try {
-      const spell = msg.content.split(" ").slice(2).join(" ");
+      const spell = msg.content.split(" ").slice(2).join(" ").toLowerCase();
 
       const indWords = spell.split(" ");
 
-      const joinWords = indWords[0] + "-" + indWords[1];
-      console.log(indWords.length);
+      const join2Words = indWords[0] + "-" + indWords[1];
 
-      const newInput = () => {
-        if (indWords.length > 1) {
-          console.log("this is joining words");
-          return joinWords;
+      const join3Words = indWords[0] + "-" + indWords[1] + "-" + indWords[2];
+
+      const join4Words =
+        indWords[0] + "-" + indWords[1] + "-" + indWords[2] + "-" + indWords[3];
+
+      const spellInput = () => {
+        if (indWords.length === 2) {
+          return join2Words;
+        } else if (indWords.length === 3) {
+          return join3Words;
+        } else if (indWords.length === 4) {
+          return join4Words;
         } else {
-          console.log("this is returning 1 word");
           return spell;
         }
       };
-      const spellUrl = `https://www.dnd5eapi.co/api/spells/${newInput()}/`;
+      const spellUrl = `https://www.dnd5eapi.co/api/spells/${spellInput()}`;
       const response = await axios.get(spellUrl);
       const data = response.data;
-      console.log(data);
       const dmg = data?.damage?.damage_at_slot_level;
 
       if (!dmg) {
-        console.log("this is the if");
         const supportSpellEmbed = new MessageEmbed()
-          .setColor("#ff9538")
+          .setColor("#F50B0B")
           .setTitle(`${data.name}`)
           .setURL()
           .addFields(
@@ -69,9 +77,8 @@ client.on("messageCreate", async (msg) => {
 
         msg.reply({ embeds: [supportSpellEmbed] });
       } else {
-        console.log("This is the else");
         const damageSpellEmbed = new MessageEmbed()
-          .setColor("#ff9538")
+          .setColor("#F50B0B")
           .setTitle(`${data.name}`)
           .setURL()
           .addFields(
@@ -112,25 +119,23 @@ client.on("messageCreate", async (msg) => {
       const classUrl = `https://www.dnd5eapi.co/api/classes/${classes}`;
       const response = await axios.get(classUrl);
       const data = response.data;
-      console.log(data);
-      console.log(
-        data.proficiency_choices[0].from,
-        "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      );
 
-      const proList = data.proficiencies.map((pro) => {
-        const pros = pro.name;
-        return `${pros}
+      const proList = data.proficiencies
+        .map((pro) => {
+          const pros = pro.name;
+          return `${pros}
         `;
-      });
+        })
+        .join(" ");
 
-      const proSkillList = data.proficiency_choices[0].from.map((skill) => {
-        console.log(skill.name, "!!!!!!!!!!!!!!!!!!!!!!!!");
-        return `${skill.name}  
+      const proSkillList = data.proficiency_choices[0].from
+        .map((skill) => {
+          return `${skill.name}  
         `;
-      });
+        })
+        .join(" ");
       const classEmbed = new MessageEmbed()
-        .setColor("#ff9538")
+        .setColor("#F50B0B")
         .setTitle(`Class : ${data.name}`)
         .setURL()
         .addFields(
@@ -138,10 +143,6 @@ client.on("messageCreate", async (msg) => {
           {
             name: `Starting proficiencies where the player ${data.proficiency_choices[0].choose} from the given list of proficiencies.`,
             value: `${proSkillList}` || "Something",
-          },
-          {
-            name: "Starting proficiencies all new characters of this class start with.",
-            value: `${proList}` || "Something",
           },
           {
             name: "Starting proficiencies all new characters of this class start with.",
@@ -164,26 +165,29 @@ client.on("messageCreate", async (msg) => {
         .toLocaleLowerCase();
       const raceUrl = `https://www.dnd5eapi.co/api/races/${race}`;
       const response = await axios.get(raceUrl);
-      console.log(response);
       const data = response.data;
-      console.log(data.subraces);
-      const racialTraits = data.traits.map((trait) => {
-        return `${trait.name}
+      const racialTraits = data.traits
+        .map((trait) => {
+          return `${trait.name}
         `;
-      });
+        })
+        .join(" ");
 
-      const subraces = data.subraces.map((sub) => {
-        return `${sub.name}`;
-      });
+      const subraces = data.subraces
+        .map((sub) => {
+          return `${sub.name}`;
+        })
+        .join(" ");
 
-      const abilityBonuses = data.ability_bonuses.map((abl) => {
-        console.log(abl, "!!!!!!!!!!!!!!!!!!!!");
-        return `+${abl.bonus} bonus to ${abl.ability_score.name}`;
-      });
+      const abilityBonuses = data.ability_bonuses
+        .map((abl) => {
+          return `+${abl.bonus} bonus to ${abl.ability_score.name}`;
+        })
+        .join(" ");
 
       const raceEmbed = new MessageEmbed()
-        .setColor("#ff9538")
-        .setTitle(`Class : ${data.name}`)
+        .setColor("#F50B0B")
+        .setTitle(`Race : ${data.name}`)
         .setURL()
         .addFields(
           { name: "Ability Bonuses", value: `${abilityBonuses}` || `No Data` },
@@ -220,9 +224,9 @@ client.on("messageCreate", async (msg) => {
     }
   }
 
-  if (command === "feat") {
+  if (command === "classfeat") {
     try {
-      const feat = msg.content.split(" ").slice(2).join(" ");
+      const feat = msg.content.split(" ").slice(2).join(" ").toLowerCase();
 
       const indWords = feat.split(" ");
 
@@ -235,32 +239,24 @@ client.on("messageCreate", async (msg) => {
 
       const newInput = () => {
         if (indWords.length === 2) {
-          console.log("this is joining 2 words");
           return join2Words;
         } else if (indWords.length === 3) {
-          console.log("this is joining 3 words");
           return join3Words;
         } else if (indWords.length === 4) {
-          console.log("this is joining 4 words");
           return join4Words;
         } else {
-          console.log("this is returning 1 word");
           return feat;
         }
       };
-      console.log(feat, "!!!!!!!!!!!!!!!!!!!!!!!");
       const featUrl = `https://www.dnd5eapi.co/api/features/${newInput()}`;
       const response = await axios.get(featUrl);
       const data = response.data;
 
       const featClass = data.class.name;
 
-      console.log();
-
       const featEmbed = new MessageEmbed()
-        .setColor("#ff9538")
-        .setTitle(`Feat : ${data.name}`)
-        .setURL()
+        .setColor("#F50B0B")
+        .setTitle(`Class Features : ${data.name}`)
         .addFields(
           {
             name: "Class",
@@ -299,11 +295,16 @@ client.on("messageCreate", async (msg) => {
         { name: "Race", value: `~ race [race name]` },
         { name: "Class", value: `~ class [class name]` },
         { name: "Spell", value: `~ spell [spell name]` },
-        { name: "Feat", value: `~ feat [feat name]` },
-        { name: "Caregul! There are magic rituals under way. These rituals will allow you to ", value: `~ equipment [equipment name]
-        ~ monster [monster name]
-        ~ rules [rule name]
-        Stay tuned Adventurers!` },
+        { name: "Equipment", value: `~ equipment [equipment name]` },
+        { name: "Monster", value: `~ spell [monster name]` },
+        { name: "Class Features", value: `~ classfeat [feat name]` },
+        { name: "Dice Roll", value: `~ roll [number of dice 1-9][die 1-100]` },
+        {
+          name: "Careful! There are magic rituals under way. These rituals will allow you to ",
+          value: `~ rules [rule name]
+        ~ encounter for a random encounter????
+        Stay tuned Adventurers!`,
+        },
         {
           name: "Author",
           value: `
@@ -314,6 +315,340 @@ client.on("messageCreate", async (msg) => {
       );
 
     msg.channel.send({ embeds: [commandEmbed] });
+  }
+
+  if (command === "roll") {
+    const dice = msg.content.split(" ").slice(2).join(" ").toLowerCase();
+
+    //Grad the string that is after the "roll"
+
+    const numOfDie = dice.slice(0, 1);
+    const dieNumber = dice.substring(2);
+    console.log(dieNumber);
+    console.log(numOfDie);
+
+    function rollDice(min, max) {
+      return min + Math.floor(Math.random() * (max - min + 1)) * numOfDie;
+    }
+
+    const diceRoll = () => {
+      return `${rollDice(1, dieNumber)} `;
+    };
+
+    msg.reply(diceRoll());
+  }
+
+  if (command === "monster") {
+    try {
+      const monster = msg.content.split(" ").slice(2).join(" ").toLowerCase();
+
+      const indWords = monster.split(" ");
+
+      const join2Words = indWords[0] + "-" + indWords[1];
+
+      const join3Words = indWords[0] + "-" + indWords[1] + "-" + indWords[2];
+
+      const join4Words =
+        indWords[0] + "-" + indWords[1] + "-" + indWords[2] + "-" + indWords[3];
+
+      const newInput = () => {
+        if (indWords.length === 2) {
+          return join2Words;
+        } else if (indWords.length === 3) {
+          return join3Words;
+        } else if (indWords.length === 4) {
+          return join4Words;
+        } else {
+          return monster;
+        }
+      };
+
+      const monURL = `https://www.dnd5eapi.co/api/monsters/${newInput()}`;
+      const response = await axios.get(monURL);
+      const data = response.data;
+      console.log(data);
+
+      if (data.special_abilities) {
+        const specialAbilities = data.special_abilities
+          .map((abl) => {
+            return `
+          Name: ${abl.name || "None"}
+          Description: ${abl.desc || "None"} 
+          `;
+          })
+          .join(" ");
+
+        const actions = data.actions
+          .map((act) => {
+            return `
+          Name: ${act.name}
+          Description: ${act.desc}
+          `;
+          })
+          .join(" ");
+
+        const monsterEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`${data.name}`)
+          .addFields(
+            {
+              name: "Size",
+              value: `${data.size}`,
+              inline: true,
+            },
+            { name: "Type", value: `${data.type}`, inline: true },
+            { name: "Alignment", value: `${data.alignment}`, inline: false },
+            { name: "AC", value: `${data.armor_class}`, inline: true },
+            { name: "Hit Points", value: `${data.hit_points}`, inline: true },
+            { name: "Hit Die", value: `${data.hit_dice}` },
+            {
+              name: "Ability Scores",
+              value: `
+          Str: ${data.strength}
+          Con: ${data.constitution}
+          Int: ${data.intelligence}
+          Wis: ${data.wisdom}
+          Dex: ${data.dexterity}
+          Cha: ${data.charisma}
+          `,
+            },
+            { name: `Languages`, value: `${data.languages || "None"}` },
+            {
+              name: `Challenge Rating`,
+              value: `${data.challenge_rating || "None"}`,
+              inline: true,
+            },
+            { name: `XP`, value: `${data.xp || "None"}`, inline: true }
+          );
+
+        const actionEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`${data.name}`).setDescription(`Special Abilities
+             ${specialAbilities} 
+            Actions 
+            ${actions}`);
+
+        msg
+          .reply({ embeds: [monsterEmbed] })
+          .then(msg.reply({ embeds: [actionEmbed] }));
+      } else if (!data.special_abilities) {
+        const monsterEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`${data.name}`)
+          .addFields(
+            {
+              name: "Size",
+              value: `${data.size}`,
+              inline: true,
+            },
+            { name: "Type", value: `${data.type}`, inline: true },
+            { name: "Alignment", value: `${data.alignment}`, inline: false },
+            { name: "AC", value: `${data.armor_class}`, inline: true },
+            { name: "Hit Points", value: `${data.hit_points}`, inline: true },
+            { name: "Hit Die", value: `${data.hit_dice}` },
+            {
+              name: "Ability Scores",
+              value: `
+          Str: ${data.strength}
+          Con: ${data.constitution}
+          Int: ${data.intelligence}
+          Wis: ${data.wisdom}
+          Dex: ${data.dexterity}
+          Cha: ${data.charisma}
+          `,
+            },
+            { name: `Languages`, value: `${data.languages || "None"}` },
+            {
+              name: `Challenge Rating`,
+              value: `${data.challenge_rating || "None"}`,
+              inline: true,
+            },
+            { name: `XP`, value: `${data.xp || "None"}`, inline: true }
+          );
+
+        msg.reply({ embeds: [monsterEmbed] });
+      }
+    } catch (err) {
+      console.log(err);
+      msg.reply(`There are no mosters by that name`);
+    }
+  }
+
+  if (command === "equipment") {
+    try {
+      const equipment = msg.content.split(" ").slice(2).join(" ").toLowerCase();
+
+      const indWords = equipment.split(" ");
+
+      const join2Words = indWords[0] + "-" + indWords[1];
+
+      const join3Words = indWords[0] + "-" + indWords[1] + "-" + indWords[2];
+
+      const join4Words =
+        indWords[0] + "-" + indWords[1] + "-" + indWords[2] + "-" + indWords[3];
+
+      const newInput = () => {
+        if (indWords.length === 2) {
+          return join2Words;
+        } else if (indWords.length === 3) {
+          return join3Words;
+        } else if (indWords.length === 4) {
+          return join4Words;
+        } else {
+          return equipment;
+        }
+      };
+
+      const equipURL = `https://www.dnd5eapi.co/api/equipment/${newInput()}`;
+      const response = await axios.get(equipURL);
+      const data = response.data;
+      console.log(data);
+
+      if (data.armor_category) {
+        const armorEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`${data.name}`)
+          .addFields(
+            {
+              name: `Equipment Category`,
+              value: `${data.equipment_category.name}`,
+            },
+            {
+              name: `Armor Category`,
+              value: `${data.armor_category}`,
+            },
+            {
+              name: `Armor Class`,
+              value: `${data.armor_class.base}`,
+            },
+            {
+              name: `Strength Minimum`,
+              value: `${data.str_minimum}`,
+            },
+            {
+              name: `Cost`,
+              value: `${data.cost.quantity} ${data.cost.unit}`,
+            }
+          );
+        msg.reply({ embeds: [armorEmbed] });
+      } else if (data.damage) {
+        const weapondEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`${data.name}`)
+          .addFields(
+            {
+              name: `Equipment Category`,
+              value: `${data.equipment_category.name}`,
+            },
+            {
+              name: `Weapon Category`,
+              value: `${data.weapon_category}`,
+            },
+            {
+              name: `Weapon Range`,
+              value: ` Normal: ${data.range.normal}
+              Long: ${data.range.long ? null : "N/A"}`,
+            },
+            {
+              name: `Damage`,
+              value: `
+              Dice: ${data.damage.damage_dice}
+              Type: ${data.damage.damage_type.name}
+              `,
+            },
+            {
+              name: `Properties`,
+              value: `${data.properties.map((prop) => {
+                return `
+                Name:
+                 ${prop.name.replace(",", "")}
+                 `;
+              })}`,
+            },
+            {
+              name: `Cost`,
+              value: `${data.cost.quantity} ${data.cost.unit}`,
+            }
+          );
+        msg.reply({ embeds: [weapondEmbed] });
+      } else {
+        const equipmentEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`${data.name}`)
+          .addFields(
+            { name: `Description`, value: `${data.desc || "No Description"}` },
+            { name: `Cost`, value: `${data.cost.quantity} ${data.cost.unit}` }
+          );
+
+        msg.reply({ embeds: [equipmentEmbed] });
+      }
+    } catch (err) {
+      console.log(err);
+      msg.reply("There is no Data on that item");
+    }
+  }
+
+  if (command === "alignment") {
+    try {
+      const alignment = msg.content.split(" ").slice(2).join(" ").toLowerCase();
+
+      const indWords = alignment.split(" ");
+
+      const join2Words = indWords[0] + "-" + indWords[1];
+
+      const join3Words = indWords[0] + "-" + indWords[1] + "-" + indWords[2];
+
+      const join4Words =
+        indWords[0] + "-" + indWords[1] + "-" + indWords[2] + "-" + indWords[3];
+
+      const newInput = () => {
+        if (indWords.length === 2) {
+          return join2Words;
+        } else if (indWords.length === 3) {
+          return join3Words;
+        } else if (indWords.length === 4) {
+          return join4Words;
+        } else {
+          return alignment;
+        }
+      };
+      const alignURL = `https://www.dnd5eapi.co/api/alignments/${newInput()}`;
+      const response = await axios.get(alignURL);
+
+      const alignEmbed = new MessageEmbed()
+        .setColor(`#F50B0B`)
+        .setTitle(`${response.data.name}`)
+        .setFields({
+          name: `Description`,
+          value: `${response.data.desc}`,
+        });
+      msg.reply({ embeds: [alignEmbed] });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  if (command === "encounter") {
+    try {
+      const monURL = `https://www.dnd5eapi.co/api/monsters/`;
+      const response = await axios.get(monURL);
+      const data = response.data;
+
+      const randomMonster =
+        data.results[Math.floor(Math.random() * data.results.length)].name;
+
+      console.log(randomMonster, "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+      const randMonEmbed = new MessageEmbed()
+        .setColor(`RED`)
+        .setTitle(
+          `Your Party has Encountered a/n ${randomMonster}. Roll for initiative.`
+        );
+
+      msg.reply({ embeds: [randMonEmbed] });
+    } catch (err) {
+      console.log(err);
+    }
   }
 });
 
