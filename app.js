@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, Intents, MessageEmbed } = require("discord.js");
+const { Client, Intents, MessageEmbed, MessageFlags } = require("discord.js");
 const axios = require("axios");
 const client = new Client({
   intents: [
@@ -298,11 +298,11 @@ client.on("messageCreate", async (msg) => {
         { name: "Equipment", value: `~ equipment [equipment name]` },
         { name: "Monster", value: `~ spell [monster name]` },
         { name: "Class Features", value: `~ classfeat [feat name]` },
+        { name: "School of Magic", value: `~ magic *all achools*   ||  ~ magic [school name] *specific school*` },
         { name: "Dice Roll", value: `~ roll [number of dice 1-9][die 1-100]` },
         {
           name: "Careful! There are magic rituals under way. These rituals will allow you to ",
           value: `~ rules [rule name]
-        ~ encounter for a random encounter????
         Stay tuned Adventurers!`,
         },
         {
@@ -646,8 +646,47 @@ client.on("messageCreate", async (msg) => {
         );
 
       msg.reply({ embeds: [randMonEmbed] });
+
+      
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  if (command === "magic") {
+    try {
+      const magic = msg.content.split(" ").slice(2).join(" ").toLowerCase()
+
+      const magURL = `https://www.dnd5eapi.co/api/magic-schools/${magic}`
+      const response = await axios.get(magURL)
+      console.log(response.data)
+
+      if (magic) {
+        const magicEmbed = new MessageEmbed()
+      .setColor(`RED`)
+      .setTitle(`${response.data.name}`)
+      .setDescription(`${response.data.desc}`)
+
+      msg.reply({embeds: [magicEmbed]})
+      } else {
+        
+        const magicEmbed = new MessageEmbed()
+      .setColor(`RED`)
+      .setTitle(`Schools of Magic`)
+      .setFields({
+        name: `Schools`, value: `${response.data.results.map((mag) => {
+          return `
+          ${mag.name}
+          `
+        }).join(" ")}`
+      })
+
+      msg.reply({embeds: [magicEmbed]})
+      }
+
+      
+    } catch(err) {
+      console.log(err)
     }
   }
 });
