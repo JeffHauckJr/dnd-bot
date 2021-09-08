@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, Intents, MessageEmbed, MessageFlags } = require("discord.js");
+const { Client, Intents, MessageEmbed, Util } = require("discord.js");
 const axios = require("axios");
 const client = new Client({
   intents: [
@@ -120,36 +120,95 @@ client.on("messageCreate", async (msg) => {
       const response = await axios.get(classUrl);
       const data = response.data;
 
-      const proList = data.proficiencies
-        .map((pro) => {
-          const pros = pro.name;
-          return `${pros}
+      if (!data.spellcasting) {
+        const proList = data.proficiencies
+          .map((pro) => {
+            const pros = pro.name;
+            return `${pros}
         `;
-        })
-        .join(" ");
+          })
+          .join(" ");
 
-      const proSkillList = data.proficiency_choices[0].from
-        .map((skill) => {
-          return `${skill.name}  
+        const proSkillList = data.proficiency_choices[0].from
+          .map((skill) => {
+            return `${skill.name}  
         `;
-        })
-        .join(" ");
-      const classEmbed = new MessageEmbed()
-        .setColor("#F50B0B")
-        .setTitle(`Class : ${data.name}`)
-        .setURL()
-        .addFields(
-          { name: "Hit Die", value: `${data.hit_die}` },
-          {
-            name: `Starting proficiencies where the player ${data.proficiency_choices[0].choose} from the given list of proficiencies.`,
-            value: `${proSkillList}` || "Something",
-          },
-          {
-            name: "Starting proficiencies all new characters of this class start with.",
-            value: `${proList}` || "Something",
-          }
-        );
-      msg.reply({ embeds: [classEmbed] });
+          })
+          .join(" ");
+        const classEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`Class : ${data.name}`)
+          .setURL()
+          .addFields(
+            { name: "Hit Die", value: `${data.hit_die}` },
+            {
+              name: `Starting proficiencies where the player ${data.proficiency_choices[0].choose} from the given list of proficiencies.`,
+              value: `${proSkillList}` || "Something",
+            },
+            {
+              name: "Starting proficiencies all new characters of this class start with.",
+              value: `${proList}` || "Something",
+            }
+          );
+        msg.reply({ embeds: [classEmbed] });
+      } else {
+        const proList = data.proficiencies
+          .map((pro) => {
+            const pros = pro.name;
+            return `${pros}
+        `;
+          })
+          .join(" ");
+
+        const proSkillList = data.proficiency_choices[0].from
+          .map((skill) => {
+            return `${skill.name}  
+        `;
+          })
+          .join(" ");
+        const classEmbed = new MessageEmbed()
+          .setColor("#F50B0B")
+          .setTitle(`Class : ${data.name}`)
+          .setURL()
+          .addFields(
+            { name: "Hit Die", value: `${data.hit_die}` },
+            {
+              name: `Starting proficiencies where the player ${data.proficiency_choices[0].choose} from the given list of proficiencies.`,
+              value: `${proSkillList}` || "Something",
+            },
+            {
+              name: "Starting proficiencies all new characters of this class start with.",
+              value: `${proList}` || "Something",
+            }
+          );
+
+        const spellcastingEmbed = new MessageEmbed()
+          .setColor(`RED`)
+          .setTitle(` ${data.name} SpellCasting`)
+          .setDescription(
+            `
+          **Level**: ${data.spellcasting.level}
+          **Ability Mod**: ${data.spellcasting.spellcasting_ability.name}
+
+          ${data.spellcasting.info
+            .map((spell) => {
+              return `**Name**:
+            ${spell.name}
+
+            **Description**:
+            ${spell.desc}
+      
+            `;
+            })
+            .join(" ")}
+
+          `
+          );
+        console.log(data.spellcasting.info);
+        msg
+          .reply({ embeds: [classEmbed] })
+          .then(msg.reply({ embeds: [spellcastingEmbed] }));
+      }
     } catch (err) {
       console.log(err);
       msg.reply("Try a Basic Class");
@@ -298,12 +357,18 @@ client.on("messageCreate", async (msg) => {
         { name: "Equipment", value: `~ equipment [equipment name]` },
         { name: "Monster", value: `~ spell [monster name]` },
         { name: "Class Features", value: `~ classfeat [feat name]` },
-        { name: "School of Magic", value: `~ magic *all achools*   ||  ~ magic [school name] *specific school*` },
+        {
+          name: "Rules",
+          value: `~ rules *list of all rules* ~ rules [specific rule]`,
+        },
+        {
+          name: "School of Magic",
+          value: `~ magic *all achools*   ||  ~ magic [school name] *specific school*`,
+        },
         { name: "Dice Roll", value: `~ roll [number of dice 1-9][die 1-100]` },
         {
-          name: "Careful! There are magic rituals under way. These rituals will allow you to ",
-          value: `~ rules [rule name]
-        Stay tuned Adventurers!`,
+          name: "Careful! There are magic rituals under way.",
+          value: `Stay tuned Adventurers!`,
         },
         {
           name: "Author",
@@ -372,8 +437,8 @@ client.on("messageCreate", async (msg) => {
         const specialAbilities = data.special_abilities
           .map((abl) => {
             return `
-          Name: ${abl.name || "None"}
-          Description: ${abl.desc || "None"} 
+          **Name**: ${abl.name || "None"}
+          **Description**: ${abl.desc || "None"} 
           `;
           })
           .join(" ");
@@ -381,8 +446,8 @@ client.on("messageCreate", async (msg) => {
         const actions = data.actions
           .map((act) => {
             return `
-          Name: ${act.name}
-          Description: ${act.desc}
+          **Name**: ${act.name}
+          **Description**: ${act.desc}
           `;
           })
           .join(" ");
@@ -423,9 +488,9 @@ client.on("messageCreate", async (msg) => {
 
         const actionEmbed = new MessageEmbed()
           .setColor("#F50B0B")
-          .setTitle(`${data.name}`).setDescription(`Special Abilities
+          .setTitle(`${data.name}`).setDescription(`**Special Abilities**
              ${specialAbilities} 
-            Actions 
+            **Actions** 
             ${actions}`);
 
         msg
@@ -646,8 +711,6 @@ client.on("messageCreate", async (msg) => {
         );
 
       msg.reply({ embeds: [randMonEmbed] });
-
-      
     } catch (err) {
       console.log(err);
     }
@@ -655,38 +718,162 @@ client.on("messageCreate", async (msg) => {
 
   if (command === "magic") {
     try {
-      const magic = msg.content.split(" ").slice(2).join(" ").toLowerCase()
+      const magic = msg.content.split(" ").slice(2).join(" ").toLowerCase();
 
-      const magURL = `https://www.dnd5eapi.co/api/magic-schools/${magic}`
-      const response = await axios.get(magURL)
-      console.log(response.data)
+      const magURL = `https://www.dnd5eapi.co/api/magic-schools/${magic}`;
+      const response = await axios.get(magURL);
+      console.log(response.data);
 
       if (magic) {
         const magicEmbed = new MessageEmbed()
-      .setColor(`RED`)
-      .setTitle(`${response.data.name}`)
-      .setDescription(`${response.data.desc}`)
+          .setColor(`RED`)
+          .setTitle(`${response.data.name}`)
+          .setDescription(`${response.data.desc}`);
 
-      msg.reply({embeds: [magicEmbed]})
+
+        msg.reply({ embeds: [magicEmbed] });
       } else {
-        
         const magicEmbed = new MessageEmbed()
-      .setColor(`RED`)
-      .setTitle(`Schools of Magic`)
-      .setFields({
-        name: `Schools`, value: `${response.data.results.map((mag) => {
-          return `
+          .setColor(`RED`)
+          .setTitle(`Schools of Magic`)
+          .setFields({
+            name: `Schools`,
+            value: `${response.data.results
+              .map((mag) => {
+                return `
           ${mag.name}
-          `
-        }).join(" ")}`
-      })
+          `;
+              })
+              .join(" ")}`,
+          });
 
-      msg.reply({embeds: [magicEmbed]})
+        msg.reply({ embeds: [magicEmbed] });
       }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-      
-    } catch(err) {
-      console.log(err)
+  if (command === "rules") {
+    try {
+      const rules = msg.content.split(" ").slice(2).join(" ").toLowerCase();
+
+      const indWords = rules.split(" ");
+
+      const join2Words = indWords[0] + "-" + indWords[1];
+
+      const join3Words = indWords[0] + "-" + indWords[1] + "-" + indWords[2];
+
+      const join4Words =
+        indWords[0] + "-" + indWords[1] + "-" + indWords[2] + "-" + indWords[3];
+
+      const newInput = () => {
+        if (indWords.length === 2) {
+          return join2Words;
+        } else if (indWords.length === 3) {
+          return join3Words;
+        } else if (indWords.length === 4) {
+          return join4Words;
+        } else {
+          return rules;
+        }
+      };
+
+      const rulesUrl =
+        `https://www.dnd5eapi.co/api/rules/${newInput()}` &&
+        `https://www.dnd5eapi.co/api/rule-sections/${newInput()}`;
+      const response = await axios.get(rulesUrl);
+      if (rules) {
+        const description = response.data.desc
+          .split(" ")
+          .join(" ")
+          .substring(0, 3000);
+        const description2 = response.data.desc
+          .split(" ")
+          .join(" ")
+          .substring(3001, 6000);
+        const description3 = response.data.desc
+          .split(" ")
+          .join(" ")
+          .substring(6001, 9000);
+        const description4 = response.data.desc
+          .split(" ")
+          .join(" ")
+          .substring(9001, 12000);
+        const description5 = response.data.desc
+          .split(" ")
+          .join(" ")
+          .substring(12001, 15000);
+
+        if (description) {
+          const rulesEmbed = new MessageEmbed()
+            .setColor(`RED`)
+            .setTitle(`${response.data.name}`)
+            .setDescription(`${description}`);
+
+          msg.reply({ embeds: [rulesEmbed] });
+        }
+        if (description2) {
+          const rulesEmbed = new MessageEmbed()
+            .setColor(`RED`)
+            .setTitle(`${response.data.name}`)
+            .setDescription(`-${description2}`);
+
+          msg.reply({ embeds: [rulesEmbed] });
+        } else {
+          return;
+        }
+
+        if (description3) {
+          const rulesEmbed = new MessageEmbed()
+            .setColor(`RED`)
+            .setTitle(`${response.data.name}`)
+            .setDescription(`-${description3}`);
+
+          msg.reply({ embeds: [rulesEmbed] });
+        } else {
+          return;
+        }
+
+        if (description4) {
+          const rulesEmbed = new MessageEmbed()
+            .setColor(`RED`)
+            .setTitle(`${response.data.name}`)
+            .setDescription(`-${description4}`);
+
+          msg.reply({ embeds: [rulesEmbed] });
+        } else {
+          return;
+        }
+
+        if (description5) {
+          const rulesEmbed = new MessageEmbed()
+            .setColor(`RED`)
+            .setTitle(`${response.data.name}`)
+            .setDescription(`-${description5}`);
+
+          msg.reply({ embeds: [rulesEmbed] });
+        } else {
+          return;
+        }
+      } else {
+        const rulesEmbed = new MessageEmbed()
+          .setColor(`RED`)
+          .setTitle(`Rules`)
+          .setDescription(
+            `${response.data.results
+              .map((rule) => {
+                return `
+                ${rule.name}`;
+              })
+              .join(" ")}`
+          );
+
+        msg.reply({ embeds: [rulesEmbed] });
+      }
+    } catch (err) {
+      console.log(err);
+      msg.reply("There is no Data on that Rule");
     }
   }
 });
