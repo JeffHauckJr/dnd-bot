@@ -1,6 +1,6 @@
 # Dungeons and Dragons 5th Edition Dungeon Master Bot
 
-#### 5th Edition D&D bot Is a bot where I utilized the Discord.js Library to help groups save time when setting up for campaigns. Using Node.js and a public api, I was able to make this happen
+#### 5th Edition D&D bot Is a project where I utilized the Discord.js Library to help groups save time when setting up for campaigns. Using Node.js and a public api, I was able to make this happen
 ```
 ~ commands || This will pull up a Message Embed listing all available commands.
 ```
