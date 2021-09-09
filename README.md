@@ -55,9 +55,17 @@
 ```
 ![rules](https://cdn.discordapp.com/attachments/770968803717939201/885586134862815232/dnd-rules.PNG)![rules1](https://cdn.discordapp.com/attachments/770968803717939201/885586168333340742/dnd-rules.PNG)
 
-#### Our Equipment command is another way to help cut prep time before a session. This also will cut down search time for both players and the DM.
+#### The school of magic command is there for general question about spellcasting schools.
 
 ```
-~ equipment [equipment name]
+~ magic *list of schools*  ~magic [school name]
 ```
-![equipment](https://cdn.discordapp.com/attachments/770968803717939201/885584279273365554/dnd-equip.PNG)
+![magic](https://cdn.discordapp.com/attachments/770968803717939201/885586970586284083/dnd-magic.PNG)
+![magic](https://cdn.discordapp.com/attachments/770968803717939201/885586997840850964/dnd-magic-schools.PNG)
+
+#### The dice roll command is simple and always necessary
+
+```
+~ roll [number of dice 1-9][die 1-100]
+```
+![diceroll](https://cdn.discordapp.com/attachments/770968803717939201/885587502306586634/dnd-roll.PNG)
