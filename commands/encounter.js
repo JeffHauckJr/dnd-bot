@@ -10,8 +10,6 @@ module.exports = async (msg) => {
         const randomMonster =
           data.results[Math.floor(Math.random() * data.results.length)].name;
   
-        console.log(randomMonster, "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  
         const randMonEmbed = new MessageEmbed()
           .setColor(`RED`)
           .setTitle(

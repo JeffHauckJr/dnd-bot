@@ -4,8 +4,6 @@ const axios = require("axios");
 module.exports = async (msg) => {
     const dice = msg.content.split(" ").slice(2).join(" ").toLowerCase();
 
-    //Grad the string that is after the "roll"
-
     const numOfDie = dice.slice(0, 1);
     const dieNumber = dice.substring(2);
     console.log(dieNumber);

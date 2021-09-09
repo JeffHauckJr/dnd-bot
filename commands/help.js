@@ -14,7 +14,7 @@ module.exports = async (msg) => {
         { name: "Class", value: `~ class [class name]` },
         { name: "Spell", value: `~ spell [spell name]` },
         { name: "Equipment", value: `~ equipment [equipment name]` },
-        { name: "Monster", value: `~ spell [monster name]` },
+        { name: "Monster", value: `~ monster [monster name]` },
         { name: "Class Features", value: `~ classfeat [feat name]` },
         {
           name: "Rules",
@@ -22,7 +22,7 @@ module.exports = async (msg) => {
         },
         {
           name: "School of Magic",
-          value: `~ magic *all achools*   ||  ~ magic [school name] *specific school*`,
+          value: `~ magic *All Schools*  ||  ~ magic [school name] *specific school*`,
         },
         { name: "Dice Roll", value: `~ roll [number of dice 1-9][die 1-100]` },
         {

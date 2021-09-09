@@ -65,12 +65,12 @@ module.exports = async (msg) => {
                 value: `1: ${data?.damage.damage_at_slot_level[1] || "None"}
                 2: ${data?.damage.damage_at_slot_level[2] || "None"}
                 3: ${data?.damage.damage_at_slot_level[3] || "None"}
-            4: ${data.damage?.damage_at_slot_level[4] || "None"}
-          5: ${data.damage?.damage_at_slot_level[5] || "None"}
-          6: ${data.damage?.damage_at_slot_level[6] || "None"}
-          7: ${data.damage?.damage_at_slot_level[7] || "None"}
-          8: ${data.damage?.damage_at_slot_level[8] || "None"}
-          9: ${data.damage?.damage_at_slot_level[9] || "None"}`,
+                4: ${data.damage?.damage_at_slot_level[4] || "None"}
+                5: ${data.damage?.damage_at_slot_level[5] || "None"}
+                6: ${data.damage?.damage_at_slot_level[6] || "None"}
+                7: ${data.damage?.damage_at_slot_level[7] || "None"}
+                8: ${data.damage?.damage_at_slot_level[8] || "None"}
+                9: ${data.damage?.damage_at_slot_level[9] || "None"}`,
               }
             );
           msg.reply({ embeds: [damageSpellEmbed] });

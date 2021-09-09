@@ -59,6 +59,8 @@ module.exports = async (msg) => {
             );
           msg.reply({ embeds: [armorEmbed] });
         } else if (data.damage) {
+
+          
           const weapondEmbed = new MessageEmbed()
             .setColor("#F50B0B")
             .setTitle(`${data.name}`)
@@ -75,11 +77,6 @@ module.exports = async (msg) => {
                 name: `Weapon Range`,
                 value: ` Normal: ${data.range.normal}
                 Long: ${data.range.long ? null : "N/A"}`,
-              },
-              {
-                name: `Throw Range`,
-                value: ` Normal: ${data.throw_range.normal ? null : "N/A"}
-                Long: ${data.throw_range.range.long ? null : "N/A"}`,
               },
               {
                 name: `Damage`,
