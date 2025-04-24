@@ -1,5 +1,5 @@
 # Use a more complete image with better package support
-FROM node:18-bullseye
+FROM node:slim@sha256:dfb18d8011c0b3a112214a32e772d9c6752131ffee512e974e59367e46fcee52
 
 # Install Python3, pip, and ffmpeg
 RUN apt-get update && \
@@ -21,4 +21,4 @@ ENV NODE_ENV=production
 ENV PyPath=python3
 
 # Run your bot
-CMD ["node", "index.js"]
+CMD ["node", "app.js"]
