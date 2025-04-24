@@ -1,4 +1,4 @@
-const { Client, Intents, MessageEmbed, Util } = require("discord.js");
+const { Client, Intents, EmbedBuilder , Util } = require("discord.js");
 const axios = require("axios");
 
 module.exports = async (msg) => {
@@ -105,4 +105,4 @@ module.exports = async (msg) => {
         console.log(err);
         msg.reply("Try a Basic Class");
       }
-}
+} 

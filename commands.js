@@ -12,6 +12,11 @@ const alignmentFunction = require("./commands/alignment")
 const encounterFunction = require("./commands/encounter")
 const magicFunction = require("./commands/magic")
 const rulesFunction = require("./commands/rules")
+const stopMusic = require("./commands/stop");
+const playLocal = require("./commands/playlocal");
+const playYtdlp = require("./commands/playYtdlp");
+const showQueue = require("./commands/queue");
+const skipSong = require("./commands/skip")
 
 module.exports = async (msg) => {
   const prefix = "~";
@@ -70,5 +75,25 @@ module.exports = async (msg) => {
 
   if (command === "rules") {
     rulesFunction(msg)
+  }
+
+  if (command === "stop") {
+    stopMusic(msg);
+  }
+
+  if (command === "playlocal") {
+    playLocal(msg);
+  }
+
+  if (command === "ytplay") {
+    playYtdlp(msg);
+  }
+
+  if (command === "queue") {
+    showQueue(msg);
+  }
+
+  if (command === "skip") {
+    skipSong(msg);
   }
 };

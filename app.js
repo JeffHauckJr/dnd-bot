@@ -1,14 +1,16 @@
 require("dotenv").config();
-const { Client, Intents, MessageEmbed, Util } = require("discord.js");
+const { Client, GatewayIntentBits } = require('discord.js');
 const axios = require("axios");
 const commandPrompt = require("./commands")
 const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MEMBERS,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildVoiceStates,
   ],
 });
+
 const TOKEN = process.env.TOKEN;
 
 client.on("ready", () => {
