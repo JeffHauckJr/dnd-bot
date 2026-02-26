@@ -11,7 +11,7 @@ const { initQueue } = require('../utils/musicQueue');
 
 const YTDLP_PATH = 'yt-dlp';
 const FFMPEG_PATH = require('ffmpeg-static');
-const YTDLP_COMMON = ['--js-runtimes', 'node', '--no-warnings', '--no-playlist'];
+const YTDLP_COMMON = ['--no-warnings', '--no-playlist'];
 
 module.exports = async function playYtdlp(msg) {
     const args = msg.content.trim().split(" ");
