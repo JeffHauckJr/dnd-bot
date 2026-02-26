@@ -6,13 +6,18 @@ module.exports = function skipSong(msg) {
     const queue = getQueue(guildId);
 
     if (!queue || !queue.connection || !queue.player || queue.songs.length === 0) {
-        return msg.reply("❗ There's nothing to skip.");
+        return msg.reply("There's nothing to skip.");
     }
 
     if (queue.player.state.status === AudioPlayerStatus.Playing || queue.player.state.status === AudioPlayerStatus.Idle) {
-        queue.player.stop(); // This will trigger AudioPlayerStatus.Idle and move to the next track
-        msg.reply("⏭️ Skipping to the next song...");
+        queue.intentionalStop = true;
+        if (queue.currentProcess) {
+            queue.currentProcess.kill();
+            queue.currentProcess = null;
+        }
+        queue.player.stop();
+        msg.reply("Skipping to the next song...");
     } else {
-        msg.reply("❗ No song is currently playing.");
+        msg.reply("No song is currently playing.");
     }
 };

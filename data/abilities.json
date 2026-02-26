@@ -1,0 +1,401 @@
+
+{
+  "fighter": {
+    "power_strike": {
+      "id": "power_strike",
+      "name": "Power Strike",
+      "description": "A powerful attack that deals extra damage.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "1d6",
+      "cooldown": 2,
+      "unlockLevel": 1
+    },
+    "second_wind": {
+      "id": "second_wind",
+      "name": "Second Wind",
+      "description": "Recover some health mid-combat.",
+      "type": "heal",
+      "range": "self",
+      "amount": "1d10+level",
+      "cooldown": 3,
+      "unlockLevel": 1
+    },
+    "cleave": {
+      "id": "cleave",
+      "name": "Cleave",
+      "description": "Strike two enemies at once.",
+      "type": "attack_aoe",
+      "range": "melee",
+      "damage": "weapon",
+      "targets": 2,
+      "cooldown": 3,
+      "unlockLevel": 3
+    },
+    "action_surge": {
+      "id": "action_surge",
+      "name": "Action Surge",
+      "description": "Take an additional attack this turn.",
+      "type": "buff",
+      "range": "self",
+      "effect": "extra_attack",
+      "cooldown": 5,
+      "unlockLevel": 5
+    },
+    "riposte": {
+      "id": "riposte",
+      "name": "Riposte",
+      "description": "Counter-attack when an enemy misses you.",
+      "type": "reaction",
+      "range": "melee",
+      "damage": "weapon",
+      "effect": "riposte_counter",
+      "cooldown": 2,
+      "unlockLevel": 7
+    },
+    "champion_strike": {
+      "id": "champion_strike",
+      "name": "Champion Strike",
+      "description": "A devastating blow that crits on 18-20.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "2d6",
+      "critRange": 18,
+      "cooldown": 4,
+      "unlockLevel": 10
+    }
+  },
+  "rogue": {
+    "sneak_attack": {
+      "id": "sneak_attack",
+      "name": "Sneak Attack",
+      "description": "Deal extra damage when you have advantage.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "2d6",
+      "cooldown": 1,
+      "unlockLevel": 1
+    },
+    "evasion": {
+      "id": "evasion",
+      "name": "Evasion",
+      "description": "Take no damage from an attack you would have taken half from.",
+      "type": "defensive",
+      "range": "self",
+      "effect": "avoid_aoe",
+      "cooldown": 3,
+      "unlockLevel": 1
+    },
+    "cunning_action": {
+      "id": "cunning_action",
+      "name": "Cunning Action",
+      "description": "Gain +4 AC until your next turn.",
+      "type": "buff",
+      "range": "melee",
+      "effect": { "ac": 4 },
+      "duration": 1,
+      "cooldown": 2,
+      "unlockLevel": 3
+    },
+    "uncanny_dodge": {
+      "id": "uncanny_dodge",
+      "name": "Uncanny Dodge",
+      "description": "Halve the damage from one attack.",
+      "type": "reaction",
+      "range": "self",
+      "effect": "halve_damage",
+      "cooldown": 2,
+      "unlockLevel": 5
+    },
+    "assassinate": {
+      "id": "assassinate",
+      "name": "Assassinate",
+      "description": "Deal triple damage to enemies at full health.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "weapon",
+      "multiplier": 3,
+      "condition": "target_full_hp",
+      "cooldown": 5,
+      "unlockLevel": 7
+    },
+    "death_strike": {
+      "id": "death_strike",
+      "name": "Death Strike",
+      "description": "A lethal strike that can instantly kill weak enemies.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "4d6",
+      "effect": "execute_below_25",
+      "cooldown": 5,
+      "unlockLevel": 10
+    }
+  },
+  "cleric": {
+    "heal": {
+      "id": "heal",
+      "name": "Cure Wounds",
+      "description": "Restore hit points to yourself or an ally.",
+      "type": "heal",
+      "range": "short",
+      "amount": "1d8+wisdom",
+      "cooldown": 1,
+      "unlockLevel": 1
+    },
+    "sacred_flame": {
+      "id": "sacred_flame",
+      "name": "Sacred Flame",
+      "description": "Call down divine fire on an enemy.",
+      "type": "attack",
+      "range": "medium",
+      "damage": "1d8",
+      "damageType": "radiant",
+      "cooldown": 0,
+      "unlockLevel": 1
+    },
+    "turn_undead": {
+      "id": "turn_undead",
+      "name": "Turn Undead",
+      "description": "Force undead enemies to flee or take damage.",
+      "type": "attack_aoe",
+      "range": "long",
+      "damage": "2d8",
+      "damageType": "radiant",
+      "targetType": "undead",
+      "cooldown": 3,
+      "unlockLevel": 3
+    },
+    "mass_heal": {
+      "id": "mass_heal",
+      "name": "Prayer of Healing",
+      "description": "Heal all party members.",
+      "type": "heal_aoe",
+      "range": "medium",
+      "amount": "2d8+wisdom",
+      "cooldown": 4,
+      "unlockLevel": 5
+    },
+    "divine_strike": {
+      "id": "divine_strike",
+      "name": "Divine Strike",
+      "description": "Infuse your weapon with divine energy.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "2d8",
+      "damageType": "radiant",
+      "cooldown": 2,
+      "unlockLevel": 7
+    },
+    "resurrection": {
+      "id": "resurrection",
+      "name": "Revivify",
+      "description": "Bring a fallen ally back to life with 1 HP.",
+      "type": "revive",
+      "range": "short",
+      "cooldown": 10,
+      "unlockLevel": 10
+    }
+  },
+  "wizard": {
+    "magic_missile": {
+      "id": "magic_missile",
+      "name": "Magic Missile",
+      "description": "Unerring bolts of force that always hit.",
+      "type": "attack",
+      "range": "medium",
+      "damage": "3d4+3",
+      "damageType": "force",
+      "autoHit": true,
+      "cooldown": 1,
+      "unlockLevel": 1
+    },
+    "shield": {
+      "id": "shield",
+      "name": "Shield",
+      "description": "Create a magical barrier that increases AC.",
+      "type": "buff",
+      "range": "self",
+      "effect": { "ac": 5 },
+      "duration": 1,
+      "cooldown": 2,
+      "unlockLevel": 1
+    },
+    "fireball": {
+      "id": "fireball",
+      "name": "Fireball",
+      "description": "A massive explosion of fire.",
+      "type": "attack_aoe",
+      "range": "long",
+      "damage": "6d6",
+      "damageType": "fire",
+      "cooldown": 3,
+      "unlockLevel": 3
+    },
+    "lightning_bolt": {
+      "id": "lightning_bolt",
+      "name": "Lightning Bolt",
+      "description": "A stroke of lightning in a line.",
+      "type": "attack_aoe",
+      "range": "medium",
+      "damage": "6d6",
+      "damageType": "lightning",
+      "cooldown": 3,
+      "unlockLevel": 5
+    },
+    "cone_of_cold": {
+      "id": "cone_of_cold",
+      "name": "Cone of Cold",
+      "description": "A blast of freezing air.",
+      "type": "attack_aoe",
+      "range": "long",
+      "damage": "8d8",
+      "damageType": "cold",
+      "cooldown": 4,
+      "unlockLevel": 7
+    },
+    "meteor_swarm": {
+      "id": "meteor_swarm",
+      "name": "Meteor Swarm",
+      "description": "Call down meteors on all enemies.",
+      "type": "attack_aoe",
+      "range": "long",
+      "damage": "10d6",
+      "damageType": "fire",
+      "cooldown": 6,
+      "unlockLevel": 10
+    }
+  },
+  "ranger": {
+    "hunters_mark": {
+      "id": "hunters_mark",
+      "name": "Hunter's Mark",
+      "description": "Mark a target to deal extra damage.",
+      "type": "buff",
+      "range": "short",
+      "effect": { "bonusDamage": "1d6" },
+      "duration": 3,
+      "cooldown": 2,
+      "unlockLevel": 1
+    },
+    "cure_wounds": {
+      "id": "cure_wounds",
+      "name": "Cure Wounds",
+      "description": "Heal yourself or an ally.",
+      "type": "heal",
+      "range": "short",
+      "amount": "1d8+wisdom",
+      "cooldown": 2,
+      "unlockLevel": 1
+    },
+    "multiattack": {
+      "id": "multiattack",
+      "name": "Multiattack",
+      "description": "Attack two different enemies.",
+      "type": "attack_multi",
+      "range": "short",
+      "damage": "weapon",
+      "targets": 2,
+      "cooldown": 2,
+      "unlockLevel": 3
+    },
+    "spike_growth": {
+      "id": "spike_growth",
+      "name": "Spike Growth",
+      "description": "Create a field of thorns that damages enemies.",
+      "type": "attack_aoe",
+      "range": "long",
+      "damage": "2d4",
+      "damageType": "piercing",
+      "duration": 2,
+      "cooldown": 3,
+      "unlockLevel": 5
+    },
+    "volley": {
+      "id": "volley",
+      "name": "Volley",
+      "description": "Fire a rain of arrows at all enemies.",
+      "type": "attack_aoe",
+      "range": "medium",
+      "damage": "weapon",
+      "cooldown": 4,
+      "unlockLevel": 7
+    },
+    "swift_quiver": {
+      "id": "swift_quiver",
+      "name": "Swift Quiver",
+      "description": "Attack four times this turn.",
+      "type": "attack_multi",
+      "range": "short",
+      "damage": "weapon",
+      "targets": 4,
+      "cooldown": 5,
+      "unlockLevel": 10
+    }
+  },
+  "barbarian": {
+    "rage": {
+      "id": "rage",
+      "name": "Rage",
+      "description": "Enter a battle rage, gaining damage resistance and bonus damage.",
+      "type": "buff",
+      "range": "self",
+      "effect": { "damageResistance": 0.5, "bonusDamage": 2 },
+      "duration": 3,
+      "cooldown": 4,
+      "unlockLevel": 1
+    },
+    "reckless_attack": {
+      "id": "reckless_attack",
+      "name": "Reckless Attack",
+      "description": "Attack with advantage but enemies have advantage against you.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "weapon",
+      "effect": { "advantage": true, "giveAdvantage": true },
+      "cooldown": 1,
+      "unlockLevel": 1
+    },
+    "frenzy": {
+      "id": "frenzy",
+      "name": "Frenzy",
+      "description": "Make an additional attack while raging.",
+      "type": "buff",
+      "range": "melee",
+      "effect": "extra_attack",
+      "requiresBuff": "rage",
+      "cooldown": 3,
+      "unlockLevel": 3
+    },
+    "extra_attack": {
+      "id": "extra_attack",
+      "name": "Brutal Strike",
+      "description": "Attack twice in one turn.",
+      "type": "attack_multi",
+      "range": "melee",
+      "damage": "weapon",
+      "targets": 2,
+      "cooldown": 2,
+      "unlockLevel": 5
+    },
+    "brutal_critical": {
+      "id": "brutal_critical",
+      "name": "Brutal Critical",
+      "description": "Your critical hits deal massive damage.",
+      "type": "attack",
+      "range": "melee",
+      "damage": "3d12",
+      "critRange": 19,
+      "cooldown": 3,
+      "unlockLevel": 7
+    },
+    "relentless_rage": {
+      "id": "relentless_rage",
+      "name": "Relentless Rage",
+      "description": "If you would drop to 0 HP while raging, stay at 1 HP instead.",
+      "type": "passive",
+      "range": "self",
+      "effect": "deathSave",
+      "unlockLevel": 10
+    }
+  }
+}

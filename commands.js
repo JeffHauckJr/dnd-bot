@@ -17,6 +17,9 @@ const playLocal = require("./commands/playlocal");
 const playYtdlp = require("./commands/playYtdlp");
 const showQueue = require("./commands/queue");
 const skipSong = require("./commands/skip")
+const recordVoice = require("./commands/recordvoice");
+const stopRecord = require("./commands/stoprecord");
+const crawlCommand = require("./commands/crawl");
 
 module.exports = async (msg) => {
   const prefix = "~";
@@ -95,5 +98,17 @@ module.exports = async (msg) => {
 
   if (command === "skip") {
     skipSong(msg);
+  }
+
+  if (command === "recordvoice") {
+    recordVoice(msg);
+  }
+
+  if (command === "stoprecord") {
+    stopRecord(msg);
+  }
+
+  if (command === "crawl") {
+    crawlCommand(msg);
   }
 };

@@ -1,0 +1,2096 @@
+[
+  {
+    "id": "rat",
+    "name": "Dire Rat",
+    "type": "animal",
+    "size": "small",
+    "challengeRating": 0.33,
+    "xpValue": 100,
+    "stats": {
+      "strength": 10,
+      "dexterity": 17,
+      "constitution": 12,
+      "intelligence": 1,
+      "wisdom": 12,
+      "charisma": 4
+    },
+    "maxHp": 5,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d4",
+        "damageType": "piercing",
+        "toHit": 4,
+        "range": "melee"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "common",
+    "description": "A large, disease-ridden rodent with beady red eyes."
+  },
+  {
+    "id": "goblin",
+    "name": "Goblin",
+    "type": "humanoid",
+    "size": "small",
+    "challengeRating": 0.33,
+    "xpValue": 100,
+    "stats": {
+      "strength": 8,
+      "dexterity": 13,
+      "constitution": 11,
+      "intelligence": 10,
+      "wisdom": 9,
+      "charisma": 6
+    },
+    "maxHp": 5,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Morningstar",
+        "damage": "1d6",
+        "damageType": "bludgeoning",
+        "toHit": 1,
+        "range": "melee"
+      },
+      {
+        "name": "Javelin",
+        "damage": "1d4",
+        "damageType": "piercing",
+        "toHit": 3,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "common",
+    "description": "A small, malicious humanoid with pointed ears and sharp teeth."
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 0.33,
+    "xpValue": 100,
+    "stats": {
+      "strength": 13,
+      "dexterity": 13,
+      "constitution": 10,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 1
+    },
+    "maxHp": 6,
+    "armorClass": 13,
+    "attacks": [
+      {
+        "name": "Scimitar",
+        "damage": "1d6+1",
+        "damageType": "slashing",
+        "toHit": 1,
+        "range": "melee"
+      },
+      {
+        "name": "Claw",
+        "damage": "1d4+1",
+        "damageType": "slashing",
+        "toHit": 2,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Damage Reduction",
+        "type": "resistance",
+        "damageTypes": ["slashing", "piercing"],
+        "reduction": 0.5,
+        "description": "Takes half damage from slashing and piercing"
+      }
+    ],
+    "lootTable": "common",
+    "description": "The animated bones of a long-dead warrior."
+  },
+  {
+    "id": "zombie",
+    "name": "Zombie",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 0.5,
+    "xpValue": 150,
+    "stats": {
+      "strength": 14,
+      "dexterity": 8,
+      "constitution": 10,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 1
+    },
+    "maxHp": 16,
+    "armorClass": 11,
+    "attacks": [
+      {
+        "name": "Slam",
+        "damage": "1d6+1",
+        "damageType": "bludgeoning",
+        "toHit": 2,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Single Actions Only",
+        "type": "flavor",
+        "description": "Can only take a single action each round"
+      }
+    ],
+    "lootTable": "common",
+    "description": "A shambling corpse animated by dark magic."
+  },
+  {
+    "id": "kobold",
+    "name": "Kobold",
+    "type": "humanoid",
+    "size": "small",
+    "challengeRating": 0.25,
+    "xpValue": 75,
+    "stats": {
+      "strength": 6,
+      "dexterity": 13,
+      "constitution": 11,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 10
+    },
+    "maxHp": 4,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Spear",
+        "damage": "1d6-2",
+        "damageType": "piercing",
+        "toHit": 1,
+        "range": "melee"
+      },
+      {
+        "name": "Sling",
+        "damage": "1d3",
+        "damageType": "bludgeoning",
+        "toHit": 3,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "common",
+    "description": "A small reptilian humanoid that lurks in dark places."
+  },
+  {
+    "id": "orc",
+    "name": "Orc",
+    "type": "humanoid",
+    "size": "medium",
+    "challengeRating": 0.5,
+    "xpValue": 150,
+    "stats": {
+      "strength": 17,
+      "dexterity": 11,
+      "constitution": 12,
+      "intelligence": 8,
+      "wisdom": 7,
+      "charisma": 6
+    },
+    "maxHp": 5,
+    "armorClass": 13,
+    "attacks": [
+      {
+        "name": "Falchion",
+        "damage": "2d4+4",
+        "damageType": "slashing",
+        "toHit": 4,
+        "range": "melee"
+      },
+      {
+        "name": "Javelin",
+        "damage": "1d6+3",
+        "damageType": "piercing",
+        "toHit": 1,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "common",
+    "description": "A brutish, aggressive humanoid with grayish skin and tusks."
+  },
+  {
+    "id": "gnoll",
+    "name": "Gnoll",
+    "type": "humanoid",
+    "size": "medium",
+    "challengeRating": 1,
+    "xpValue": 300,
+    "stats": {
+      "strength": 15,
+      "dexterity": 10,
+      "constitution": 13,
+      "intelligence": 8,
+      "wisdom": 11,
+      "charisma": 8
+    },
+    "maxHp": 11,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Battleaxe",
+        "damage": "1d8+2",
+        "damageType": "slashing",
+        "toHit": 3,
+        "range": "melee"
+      },
+      {
+        "name": "Shortbow",
+        "damage": "1d6",
+        "damageType": "piercing",
+        "toHit": 1,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "common",
+    "description": "A savage, hyena-headed humanoid known for its cruelty."
+  },
+  {
+    "id": "hobgoblin",
+    "name": "Hobgoblin",
+    "type": "humanoid",
+    "size": "medium",
+    "challengeRating": 0.5,
+    "xpValue": 150,
+    "stats": {
+      "strength": 13,
+      "dexterity": 13,
+      "constitution": 14,
+      "intelligence": 10,
+      "wisdom": 9,
+      "charisma": 8
+    },
+    "maxHp": 6,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Longsword",
+        "damage": "1d8+1",
+        "damageType": "slashing",
+        "toHit": 2,
+        "range": "melee"
+      },
+      {
+        "name": "Javelin",
+        "damage": "1d6+1",
+        "damageType": "piercing",
+        "toHit": 2,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "common",
+    "description": "A militaristic goblinoid, larger and smarter than its goblin cousins."
+  },
+  {
+    "id": "bugbear",
+    "name": "Bugbear",
+    "type": "humanoid",
+    "size": "medium",
+    "challengeRating": 2,
+    "xpValue": 600,
+    "stats": {
+      "strength": 15,
+      "dexterity": 12,
+      "constitution": 13,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 9
+    },
+    "maxHp": 16,
+    "armorClass": 17,
+    "attacks": [
+      {
+        "name": "Morningstar",
+        "damage": "1d8+2",
+        "damageType": "bludgeoning",
+        "toHit": 4,
+        "range": "melee"
+      },
+      {
+        "name": "Javelin",
+        "damage": "1d6+2",
+        "damageType": "piercing",
+        "toHit": 3,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "uncommon",
+    "description": "A hulking, stealthy goblinoid that delights in ambushes."
+  },
+  {
+    "id": "giant_spider",
+    "name": "Giant Spider",
+    "type": "vermin",
+    "size": "medium",
+    "challengeRating": 1,
+    "xpValue": 300,
+    "stats": {
+      "strength": 11,
+      "dexterity": 17,
+      "constitution": 12,
+      "intelligence": 1,
+      "wisdom": 10,
+      "charisma": 2
+    },
+    "maxHp": 22,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d6",
+        "damageType": "piercing",
+        "toHit": 4,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Poison",
+        "type": "on_hit",
+        "bonusDamage": "1d4",
+        "damageType": "poison",
+        "description": "Bite inflicts poison (1d4 extra poison damage)"
+      }
+    ],
+    "lootTable": "common",
+    "description": "A dog-sized spider with venomous fangs."
+  },
+  {
+    "id": "giant_centipede",
+    "name": "Giant Centipede",
+    "type": "vermin",
+    "size": "medium",
+    "challengeRating": 0.5,
+    "xpValue": 150,
+    "stats": {
+      "strength": 1,
+      "dexterity": 17,
+      "constitution": 10,
+      "intelligence": 1,
+      "wisdom": 10,
+      "charisma": 2
+    },
+    "maxHp": 3,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d3-4",
+        "damageType": "piercing",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Poison",
+        "type": "on_hit",
+        "bonusDamage": "1d2",
+        "damageType": "poison",
+        "description": "Bite inflicts poison (1d2 extra poison damage)"
+      }
+    ],
+    "lootTable": "common",
+    "description": "A long, many-legged insect with venomous mandibles."
+  },
+  {
+    "id": "wolf",
+    "name": "Wolf",
+    "type": "animal",
+    "size": "medium",
+    "challengeRating": 1,
+    "xpValue": 300,
+    "stats": {
+      "strength": 13,
+      "dexterity": 15,
+      "constitution": 15,
+      "intelligence": 2,
+      "wisdom": 12,
+      "charisma": 6
+    },
+    "maxHp": 13,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d6+1",
+        "damageType": "piercing",
+        "toHit": 3,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Trip",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 11,
+        "saveStat": "strength",
+        "duration": 1,
+        "description": "Can trip opponent on successful bite (DC 11 STR save or lose next turn)"
+      }
+    ],
+    "lootTable": "common",
+    "description": "A cunning pack hunter with sharp teeth."
+  },
+  {
+    "id": "dire_wolf",
+    "name": "Dire Wolf",
+    "type": "animal",
+    "size": "large",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 25,
+      "dexterity": 15,
+      "constitution": 17,
+      "intelligence": 2,
+      "wisdom": 12,
+      "charisma": 10
+    },
+    "maxHp": 45,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d8+10",
+        "damageType": "piercing",
+        "toHit": 11,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Trip",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 14,
+        "saveStat": "strength",
+        "duration": 1,
+        "description": "Can trip opponent on successful bite (DC 14 STR save or lose next turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "An enormous prehistoric wolf, savage and relentless."
+  },
+  {
+    "id": "bear_black",
+    "name": "Black Bear",
+    "type": "animal",
+    "size": "medium",
+    "challengeRating": 2,
+    "xpValue": 600,
+    "stats": {
+      "strength": 19,
+      "dexterity": 13,
+      "constitution": 15,
+      "intelligence": 2,
+      "wisdom": 12,
+      "charisma": 6
+    },
+    "maxHp": 19,
+    "armorClass": 13,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d4+4",
+        "damageType": "slashing",
+        "toHit": 6,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d6+2",
+        "damageType": "piercing",
+        "toHit": 6,
+        "range": "melee"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "uncommon",
+    "description": "A powerful forest predator with sharp claws."
+  },
+  {
+    "id": "bear_brown",
+    "name": "Brown Bear",
+    "type": "animal",
+    "size": "large",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 27,
+      "dexterity": 13,
+      "constitution": 19,
+      "intelligence": 2,
+      "wisdom": 12,
+      "charisma": 6
+    },
+    "maxHp": 51,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d8+8",
+        "damageType": "slashing",
+        "toHit": 11,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "2d6+4",
+        "damageType": "piercing",
+        "toHit": 11,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Improved Grab",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 15,
+        "saveStat": "strength",
+        "duration": 1,
+        "attackName": "Claw",
+        "description": "Can grapple on successful claw hit (DC 15 STR save or lose next turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A massive bear with tremendous strength."
+  },
+  {
+    "id": "ogre",
+    "name": "Ogre",
+    "type": "giant",
+    "size": "large",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 21,
+      "dexterity": 8,
+      "constitution": 15,
+      "intelligence": 6,
+      "wisdom": 10,
+      "charisma": 7
+    },
+    "maxHp": 29,
+    "armorClass": 16,
+    "attacks": [
+      {
+        "name": "Greatclub",
+        "damage": "2d8+7",
+        "damageType": "bludgeoning",
+        "toHit": 8,
+        "range": "melee"
+      },
+      {
+        "name": "Javelin",
+        "damage": "1d8+5",
+        "damageType": "piercing",
+        "toHit": 1,
+        "range": "short"
+      }
+    ],
+    "abilities": [],
+    "lootTable": "uncommon",
+    "description": "A hulking, brutish giant with a dim intellect and foul temper."
+  },
+  {
+    "id": "troll",
+    "name": "Troll",
+    "type": "giant",
+    "size": "large",
+    "challengeRating": 5,
+    "xpValue": 1500,
+    "stats": {
+      "strength": 23,
+      "dexterity": 14,
+      "constitution": 23,
+      "intelligence": 6,
+      "wisdom": 9,
+      "charisma": 6
+    },
+    "maxHp": 63,
+    "armorClass": 16,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d6+6",
+        "damageType": "slashing",
+        "toHit": 9,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d6+3",
+        "damageType": "piercing",
+        "toHit": 9,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Regeneration",
+        "type": "regeneration",
+        "amount": 5,
+        "preventedBy": ["fire", "acid"],
+        "description": "Regenerates 5 HP per round unless damaged by fire or acid"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A lanky, green-skinned monster with incredible regenerative powers."
+  },
+  {
+    "id": "hill_giant",
+    "name": "Hill Giant",
+    "type": "giant",
+    "size": "large",
+    "challengeRating": 7,
+    "xpValue": 2100,
+    "stats": {
+      "strength": 25,
+      "dexterity": 8,
+      "constitution": 19,
+      "intelligence": 6,
+      "wisdom": 10,
+      "charisma": 7
+    },
+    "maxHp": 102,
+    "armorClass": 20,
+    "attacks": [
+      {
+        "name": "Greatclub",
+        "damage": "2d8+10",
+        "damageType": "bludgeoning",
+        "toHit": 14,
+        "range": "melee"
+      },
+      {
+        "name": "Rock",
+        "damage": "2d6+7",
+        "damageType": "bludgeoning",
+        "toHit": 5,
+        "range": "short"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Rock Throwing",
+        "type": "flavor",
+        "description": "Can throw rocks up to 120 feet"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A massive, dim-witted giant that terrorizes the hills."
+  },
+  {
+    "id": "ettin",
+    "name": "Ettin",
+    "type": "giant",
+    "size": "large",
+    "challengeRating": 6,
+    "xpValue": 1800,
+    "stats": {
+      "strength": 25,
+      "dexterity": 8,
+      "constitution": 15,
+      "intelligence": 6,
+      "wisdom": 10,
+      "charisma": 11
+    },
+    "maxHp": 65,
+    "armorClass": 18,
+    "attacks": [
+      {
+        "name": "Morningstar (Left)",
+        "damage": "2d6+7",
+        "damageType": "bludgeoning",
+        "toHit": 12,
+        "range": "melee"
+      },
+      {
+        "name": "Morningstar (Right)",
+        "damage": "2d6+7",
+        "damageType": "bludgeoning",
+        "toHit": 12,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Two Heads",
+        "type": "flavor",
+        "description": "Cannot be flanked and has superior perception"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A two-headed giant, each head with its own personality."
+  },
+  {
+    "id": "minotaur",
+    "name": "Minotaur",
+    "type": "monstrous_humanoid",
+    "size": "large",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 19,
+      "dexterity": 10,
+      "constitution": 15,
+      "intelligence": 7,
+      "wisdom": 10,
+      "charisma": 8
+    },
+    "maxHp": 39,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Greataxe",
+        "damage": "3d6+6",
+        "damageType": "slashing",
+        "toHit": 9,
+        "range": "melee"
+      },
+      {
+        "name": "Gore",
+        "damage": "1d8+2",
+        "damageType": "piercing",
+        "toHit": 9,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Charge",
+        "type": "on_hit",
+        "bonusDamage": "2d6",
+        "damageType": "bludgeoning",
+        "attackName": "Gore",
+        "description": "Deals extra 2d6 damage with gore attack"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A fierce bull-headed humanoid that haunts mazes and labyrinths."
+  },
+  {
+    "id": "owlbear",
+    "name": "Owlbear",
+    "type": "magical_beast",
+    "size": "large",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 21,
+      "dexterity": 12,
+      "constitution": 21,
+      "intelligence": 2,
+      "wisdom": 12,
+      "charisma": 10
+    },
+    "maxHp": 52,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d6+5",
+        "damageType": "slashing",
+        "toHit": 9,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d8+2",
+        "damageType": "piercing",
+        "toHit": 9,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Improved Grab",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 14,
+        "saveStat": "strength",
+        "duration": 1,
+        "attackName": "Claw",
+        "description": "Can grapple and squeeze (DC 14 STR save or lose next turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A fearsome hybrid of bear and owl, highly aggressive."
+  },
+  {
+    "id": "gelatinous_cube",
+    "name": "Gelatinous Cube",
+    "type": "ooze",
+    "size": "large",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 10,
+      "dexterity": 1,
+      "constitution": 26,
+      "intelligence": 1,
+      "wisdom": 1,
+      "charisma": 1
+    },
+    "maxHp": 54,
+    "armorClass": 3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "damage": "1d6",
+        "damageType": "acid",
+        "toHit": 2,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Engulf",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 13,
+        "saveStat": "constitution",
+        "duration": 1,
+        "description": "Can engulf creatures (DC 13 CON save or lose next turn)"
+      },
+      {
+        "name": "Acid",
+        "type": "on_hit",
+        "bonusDamage": "1d6",
+        "damageType": "acid",
+        "description": "Contact dissolves with acid (1d6 extra acid damage)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A nearly transparent cube of acidic jelly that absorbs prey."
+  },
+  {
+    "id": "ochre_jelly",
+    "name": "Ochre Jelly",
+    "type": "ooze",
+    "size": "large",
+    "challengeRating": 5,
+    "xpValue": 1500,
+    "stats": {
+      "strength": 15,
+      "dexterity": 1,
+      "constitution": 22,
+      "intelligence": 1,
+      "wisdom": 1,
+      "charisma": 1
+    },
+    "maxHp": 69,
+    "armorClass": 4,
+    "attacks": [
+      {
+        "name": "Slam",
+        "damage": "2d4+2",
+        "damageType": "acid",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Acid",
+        "type": "on_hit",
+        "bonusDamage": "1d6",
+        "damageType": "acid",
+        "description": "Dissolves organic material (1d6 extra acid damage)"
+      },
+      {
+        "name": "Split",
+        "type": "flavor",
+        "description": "Splits into two when hit by slashing or lightning"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "An amber-colored blob of corrosive slime."
+  },
+  {
+    "id": "carrion_crawler",
+    "name": "Carrion Crawler",
+    "type": "aberration",
+    "size": "large",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 14,
+      "dexterity": 17,
+      "constitution": 17,
+      "intelligence": 1,
+      "wisdom": 15,
+      "charisma": 6
+    },
+    "maxHp": 19,
+    "armorClass": 17,
+    "attacks": [
+      {
+        "name": "Tentacle",
+        "damage": "1d4",
+        "damageType": "poison",
+        "toHit": 3,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d4+1",
+        "damageType": "piercing",
+        "toHit": 0,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Paralysis",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 13,
+        "saveStat": "constitution",
+        "duration": 1,
+        "attackName": "Tentacle",
+        "description": "Tentacles cause paralysis (DC 13 CON save or lose next turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A giant centipede-like creature that paralyzes prey with its tentacles."
+  },
+  {
+    "id": "wight",
+    "name": "Wight",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 14,
+      "dexterity": 12,
+      "constitution": 10,
+      "intelligence": 11,
+      "wisdom": 13,
+      "charisma": 15
+    },
+    "maxHp": 26,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Slam",
+        "damage": "1d4+1",
+        "damageType": "bludgeoning",
+        "toHit": 3,
+        "range": "melee"
+      },
+      {
+        "name": "Longsword",
+        "damage": "1d8+2",
+        "damageType": "slashing",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Energy Drain",
+        "type": "on_hit",
+        "effect": "weakened",
+        "duration": 2,
+        "saveDC": 13,
+        "saveStat": "constitution",
+        "description": "Slam attack drains energy (-2 to attacks for 2 turns)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "An undead creature driven by hatred of the living."
+  },
+  {
+    "id": "wraith",
+    "name": "Wraith",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 5,
+    "xpValue": 1500,
+    "stats": {
+      "strength": 10,
+      "dexterity": 16,
+      "constitution": 10,
+      "intelligence": 14,
+      "wisdom": 14,
+      "charisma": 15
+    },
+    "maxHp": 32,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Incorporeal Touch",
+        "damage": "1d4",
+        "damageType": "necrotic",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Incorporeal",
+        "type": "resistance",
+        "damageTypes": ["slashing", "piercing", "bludgeoning"],
+        "reduction": 0.5,
+        "description": "Takes half damage from physical weapons"
+      },
+      {
+        "name": "Constitution Drain",
+        "type": "on_hit",
+        "bonusDamage": "1d6",
+        "damageType": "necrotic",
+        "description": "Touch drains life force (1d6 extra necrotic damage)"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A malevolent spirit wreathed in darkness."
+  },
+  {
+    "id": "ghoul",
+    "name": "Ghoul",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 1,
+    "xpValue": 300,
+    "stats": {
+      "strength": 13,
+      "dexterity": 15,
+      "constitution": 10,
+      "intelligence": 13,
+      "wisdom": 14,
+      "charisma": 12
+    },
+    "maxHp": 13,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d6+1",
+        "damageType": "piercing",
+        "toHit": 2,
+        "range": "melee"
+      },
+      {
+        "name": "Claw",
+        "damage": "1d3",
+        "damageType": "slashing",
+        "toHit": 0,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Paralysis",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 12,
+        "saveStat": "constitution",
+        "duration": 1,
+        "description": "Attacks cause paralysis (DC 12 CON save or lose next turn)"
+      }
+    ],
+    "lootTable": "common",
+    "description": "A flesh-eating undead with paralyzing claws."
+  },
+  {
+    "id": "ghast",
+    "name": "Ghast",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 17,
+      "dexterity": 17,
+      "constitution": 10,
+      "intelligence": 13,
+      "wisdom": 14,
+      "charisma": 16
+    },
+    "maxHp": 29,
+    "armorClass": 17,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d8+3",
+        "damageType": "piercing",
+        "toHit": 4,
+        "range": "melee"
+      },
+      {
+        "name": "Claw",
+        "damage": "1d4+1",
+        "damageType": "slashing",
+        "toHit": 4,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Paralysis",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 15,
+        "saveStat": "constitution",
+        "duration": 1,
+        "description": "Attacks cause paralysis (DC 15 CON save or lose next turn)"
+      },
+      {
+        "name": "Stench",
+        "type": "special_attack",
+        "effect": "weakened",
+        "saveDC": 12,
+        "saveStat": "constitution",
+        "duration": 1,
+        "aoe": true,
+        "cooldown": 3,
+        "description": "Nauseating stench weakens nearby creatures (-2 attacks for 1 turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A more powerful and intelligent ghoul with a nauseating stench."
+  },
+  {
+    "id": "mummy",
+    "name": "Mummy",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 5,
+    "xpValue": 1500,
+    "stats": {
+      "strength": 24,
+      "dexterity": 10,
+      "constitution": 10,
+      "intelligence": 6,
+      "wisdom": 14,
+      "charisma": 15
+    },
+    "maxHp": 55,
+    "armorClass": 20,
+    "attacks": [
+      {
+        "name": "Slam",
+        "damage": "1d6+10",
+        "damageType": "bludgeoning",
+        "toHit": 11,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Despair",
+        "type": "special_attack",
+        "effect": "stunned",
+        "saveDC": 16,
+        "saveStat": "wisdom",
+        "duration": 1,
+        "aoe": true,
+        "cooldown": 4,
+        "description": "Dreadful presence causes paralysis (DC 16 WIS save or lose next turn)"
+      },
+      {
+        "name": "Mummy Rot",
+        "type": "on_hit",
+        "bonusDamage": "2d6",
+        "damageType": "necrotic",
+        "description": "Slam inflicts cursed rot (2d6 extra necrotic damage)"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "An ancient corpse wrapped in bandages, animated by dark curses."
+  },
+  {
+    "id": "vampire_spawn",
+    "name": "Vampire Spawn",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 16,
+      "dexterity": 14,
+      "constitution": 10,
+      "intelligence": 13,
+      "wisdom": 13,
+      "charisma": 14
+    },
+    "maxHp": 32,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Slam",
+        "damage": "1d6+4",
+        "damageType": "bludgeoning",
+        "toHit": 5,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d6+1",
+        "damageType": "piercing",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Blood Drain",
+        "type": "on_hit",
+        "bonusDamage": "1d6",
+        "damageType": "necrotic",
+        "selfHeal": true,
+        "attackName": "Bite",
+        "description": "Drains blood for 1d6 necrotic damage and heals self"
+      },
+      {
+        "name": "Energy Drain",
+        "type": "on_hit",
+        "effect": "weakened",
+        "duration": 2,
+        "saveDC": 13,
+        "saveStat": "constitution",
+        "attackName": "Bite",
+        "description": "Bite drains energy (-2 to attacks for 2 turns)"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A lesser vampire, slave to its creator."
+  },
+  {
+    "id": "hell_hound",
+    "name": "Hell Hound",
+    "type": "outsider",
+    "size": "medium",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 13,
+      "dexterity": 13,
+      "constitution": 15,
+      "intelligence": 6,
+      "wisdom": 10,
+      "charisma": 6
+    },
+    "maxHp": 22,
+    "armorClass": 16,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d8+1",
+        "damageType": "piercing",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Fire Breath",
+        "type": "special_attack",
+        "damage": "2d6",
+        "damageType": "fire",
+        "aoe": true,
+        "saveDC": 12,
+        "saveStat": "dexterity",
+        "cooldown": 3,
+        "description": "10 ft cone, 2d6 fire damage"
+      },
+      {
+        "name": "Fire Immunity",
+        "type": "immunity",
+        "damageTypes": ["fire"],
+        "description": "Immune to fire damage"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A fiendish hound that breathes fire."
+  },
+  {
+    "id": "imp",
+    "name": "Imp",
+    "type": "outsider",
+    "size": "tiny",
+    "challengeRating": 2,
+    "xpValue": 600,
+    "stats": {
+      "strength": 10,
+      "dexterity": 20,
+      "constitution": 10,
+      "intelligence": 10,
+      "wisdom": 12,
+      "charisma": 14
+    },
+    "maxHp": 13,
+    "armorClass": 20,
+    "attacks": [
+      {
+        "name": "Sting",
+        "damage": "1d4",
+        "damageType": "piercing",
+        "toHit": 8,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Poison",
+        "type": "on_hit",
+        "bonusDamage": "1d4",
+        "damageType": "poison",
+        "description": "Sting inflicts poison (1d4 extra poison damage)"
+      },
+      {
+        "name": "Polymorph",
+        "type": "flavor",
+        "description": "Can assume the form of a rat, raven, or spider"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A tiny, winged devil that serves as a familiar to evil spellcasters."
+  },
+  {
+    "id": "quasit",
+    "name": "Quasit",
+    "type": "outsider",
+    "size": "tiny",
+    "challengeRating": 2,
+    "xpValue": 600,
+    "stats": {
+      "strength": 8,
+      "dexterity": 17,
+      "constitution": 10,
+      "intelligence": 10,
+      "wisdom": 12,
+      "charisma": 10
+    },
+    "maxHp": 13,
+    "armorClass": 18,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d3-1",
+        "damageType": "slashing",
+        "toHit": 8,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Poison",
+        "type": "on_hit",
+        "bonusDamage": "1d4",
+        "damageType": "poison",
+        "description": "Claw inflicts poison (1d4 extra poison damage)"
+      },
+      {
+        "name": "Invisibility",
+        "type": "flavor",
+        "description": "Can turn invisible at will"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A tiny, demonic creature that serves chaotic evil masters."
+  },
+  {
+    "id": "gargoyle",
+    "name": "Gargoyle",
+    "type": "magical_beast",
+    "size": "medium",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 15,
+      "dexterity": 14,
+      "constitution": 18,
+      "intelligence": 6,
+      "wisdom": 11,
+      "charisma": 7
+    },
+    "maxHp": 37,
+    "armorClass": 16,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d4",
+        "damageType": "slashing",
+        "toHit": 4,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d6",
+        "damageType": "piercing",
+        "toHit": 4,
+        "range": "melee"
+      },
+      {
+        "name": "Gore",
+        "damage": "1d6",
+        "damageType": "piercing",
+        "toHit": 4,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Damage Reduction",
+        "type": "resistance",
+        "damageTypes": ["slashing", "piercing", "bludgeoning"],
+        "reduction": 0.5,
+        "description": "Takes half damage from non-magical weapons"
+      },
+      {
+        "name": "Freeze",
+        "type": "flavor",
+        "description": "Can remain perfectly still to appear as a statue"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A winged stone creature that lurks on buildings."
+  },
+  {
+    "id": "basilisk",
+    "name": "Basilisk",
+    "type": "magical_beast",
+    "size": "medium",
+    "challengeRating": 5,
+    "xpValue": 1500,
+    "stats": {
+      "strength": 15,
+      "dexterity": 8,
+      "constitution": 15,
+      "intelligence": 2,
+      "wisdom": 12,
+      "charisma": 11
+    },
+    "maxHp": 45,
+    "armorClass": 16,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d8+3",
+        "damageType": "piercing",
+        "toHit": 5,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Petrifying Gaze",
+        "type": "special_attack",
+        "effect": "stunned",
+        "saveDC": 13,
+        "saveStat": "constitution",
+        "duration": 2,
+        "cooldown": 3,
+        "description": "Petrifying gaze (DC 13 CON save or stunned for 2 turns)"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "An eight-legged reptile with a deadly petrifying gaze."
+  },
+  {
+    "id": "cockatrice",
+    "name": "Cockatrice",
+    "type": "magical_beast",
+    "size": "small",
+    "challengeRating": 3,
+    "xpValue": 900,
+    "stats": {
+      "strength": 6,
+      "dexterity": 17,
+      "constitution": 11,
+      "intelligence": 2,
+      "wisdom": 13,
+      "charisma": 8
+    },
+    "maxHp": 27,
+    "armorClass": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "1d4-2",
+        "damageType": "piercing",
+        "toHit": 4,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Petrification",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 12,
+        "saveStat": "constitution",
+        "duration": 1,
+        "description": "Bite can partially petrify (DC 12 CON save or lose next turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A bizarre chicken-like creature with a petrifying touch."
+  },
+  {
+    "id": "medusa",
+    "name": "Medusa",
+    "type": "monstrous_humanoid",
+    "size": "medium",
+    "challengeRating": 7,
+    "xpValue": 2100,
+    "stats": {
+      "strength": 10,
+      "dexterity": 15,
+      "constitution": 12,
+      "intelligence": 12,
+      "wisdom": 13,
+      "charisma": 15
+    },
+    "maxHp": 33,
+    "armorClass": 15,
+    "attacks": [
+      {
+        "name": "Shortbow",
+        "damage": "1d6",
+        "damageType": "piercing",
+        "toHit": 8,
+        "range": "short"
+      },
+      {
+        "name": "Snake Hair",
+        "damage": "1d4",
+        "damageType": "piercing",
+        "toHit": 8,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Petrifying Gaze",
+        "type": "special_attack",
+        "effect": "stunned",
+        "saveDC": 15,
+        "saveStat": "constitution",
+        "duration": 2,
+        "cooldown": 3,
+        "description": "Petrifying gaze (DC 15 CON save or stunned for 2 turns)"
+      },
+      {
+        "name": "Poison",
+        "type": "on_hit",
+        "bonusDamage": "1d4",
+        "damageType": "poison",
+        "attackName": "Snake Hair",
+        "description": "Snake hair bite inflicts poison (1d4 extra poison damage)"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A horrifying woman with snakes for hair whose gaze turns flesh to stone."
+  },
+  {
+    "id": "harpy",
+    "name": "Harpy",
+    "type": "monstrous_humanoid",
+    "size": "medium",
+    "challengeRating": 4,
+    "xpValue": 1200,
+    "stats": {
+      "strength": 10,
+      "dexterity": 15,
+      "constitution": 10,
+      "intelligence": 7,
+      "wisdom": 12,
+      "charisma": 17
+    },
+    "maxHp": 31,
+    "armorClass": 13,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "1d3",
+        "damageType": "slashing",
+        "toHit": 3,
+        "range": "melee"
+      },
+      {
+        "name": "Club",
+        "damage": "1d6",
+        "damageType": "bludgeoning",
+        "toHit": 1,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Captivating Song",
+        "type": "special_attack",
+        "effect": "stunned",
+        "saveDC": 16,
+        "saveStat": "wisdom",
+        "duration": 1,
+        "aoe": true,
+        "cooldown": 3,
+        "description": "Captivating song (DC 16 WIS save or lose next turn)"
+      }
+    ],
+    "lootTable": "uncommon",
+    "description": "A vicious creature with a woman's face and a vulture's body."
+  },
+  {
+    "id": "manticore",
+    "name": "Manticore",
+    "type": "magical_beast",
+    "size": "large",
+    "challengeRating": 5,
+    "xpValue": 1500,
+    "stats": {
+      "strength": 20,
+      "dexterity": 16,
+      "constitution": 20,
+      "intelligence": 7,
+      "wisdom": 12,
+      "charisma": 9
+    },
+    "maxHp": 57,
+    "armorClass": 17,
+    "attacks": [
+      {
+        "name": "Claw",
+        "damage": "2d4+5",
+        "damageType": "slashing",
+        "toHit": 9,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "1d8+2",
+        "damageType": "piercing",
+        "toHit": 9,
+        "range": "melee"
+      },
+      {
+        "name": "Tail Spikes",
+        "damage": "1d8+2",
+        "damageType": "piercing",
+        "toHit": 8,
+        "range": "short"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Tail Spikes",
+        "type": "flavor",
+        "description": "Can fire up to 6 spikes per round"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A winged lion with a human face and a tail of deadly spikes."
+  },
+  {
+    "id": "chimera",
+    "name": "Chimera",
+    "type": "magical_beast",
+    "size": "large",
+    "challengeRating": 7,
+    "xpValue": 2100,
+    "stats": {
+      "strength": 21,
+      "dexterity": 11,
+      "constitution": 19,
+      "intelligence": 4,
+      "wisdom": 13,
+      "charisma": 10
+    },
+    "maxHp": 76,
+    "armorClass": 19,
+    "attacks": [
+      {
+        "name": "Bite (Lion)",
+        "damage": "2d6+5",
+        "damageType": "piercing",
+        "toHit": 10,
+        "range": "melee"
+      },
+      {
+        "name": "Bite (Dragon)",
+        "damage": "1d8+2",
+        "damageType": "piercing",
+        "toHit": 10,
+        "range": "melee"
+      },
+      {
+        "name": "Gore",
+        "damage": "1d8+2",
+        "damageType": "piercing",
+        "toHit": 10,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Breath Weapon",
+        "type": "special_attack",
+        "damage": "3d8",
+        "damageType": "fire",
+        "aoe": true,
+        "saveDC": 13,
+        "saveStat": "dexterity",
+        "cooldown": 4,
+        "description": "Dragon head breathes fire, 3d8 damage"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A three-headed monster: lion, dragon, and goat."
+  },
+  {
+    "id": "wyvern",
+    "name": "Wyvern",
+    "type": "dragon",
+    "size": "large",
+    "challengeRating": 6,
+    "xpValue": 1800,
+    "stats": {
+      "strength": 19,
+      "dexterity": 12,
+      "constitution": 15,
+      "intelligence": 6,
+      "wisdom": 12,
+      "charisma": 9
+    },
+    "maxHp": 59,
+    "armorClass": 18,
+    "attacks": [
+      {
+        "name": "Sting",
+        "damage": "1d6+4",
+        "damageType": "piercing",
+        "toHit": 10,
+        "range": "melee"
+      },
+      {
+        "name": "Bite",
+        "damage": "2d8+4",
+        "damageType": "piercing",
+        "toHit": 10,
+        "range": "melee"
+      },
+      {
+        "name": "Talons",
+        "damage": "2d6+4",
+        "damageType": "slashing",
+        "toHit": 10,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Poison Sting",
+        "type": "on_hit",
+        "bonusDamage": "2d6",
+        "damageType": "poison",
+        "attackName": "Sting",
+        "description": "Sting inflicts deadly poison (2d6 extra poison damage)"
+      }
+    ],
+    "lootTable": "rare",
+    "description": "A two-legged dragon with a venomous tail stinger."
+  },
+  {
+    "id": "young_black_dragon",
+    "name": "Young Black Dragon",
+    "type": "dragon",
+    "size": "medium",
+    "challengeRating": 7,
+    "xpValue": 2100,
+    "stats": {
+      "strength": 17,
+      "dexterity": 10,
+      "constitution": 15,
+      "intelligence": 10,
+      "wisdom": 11,
+      "charisma": 10
+    },
+    "maxHp": 104,
+    "armorClass": 20,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "2d6+3",
+        "damageType": "piercing",
+        "toHit": 10,
+        "range": "melee"
+      },
+      {
+        "name": "Claw",
+        "damage": "1d6+1",
+        "damageType": "slashing",
+        "toHit": 10,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Acid Breath",
+        "type": "special_attack",
+        "damage": "6d4",
+        "damageType": "acid",
+        "aoe": true,
+        "saveDC": 14,
+        "saveStat": "dexterity",
+        "cooldown": 3,
+        "description": "40ft line, 6d4 acid damage"
+      },
+      {
+        "name": "Acid Immunity",
+        "type": "immunity",
+        "damageTypes": ["acid"],
+        "description": "Immune to acid damage"
+      }
+    ],
+    "lootTable": "boss",
+    "description": "A young dragon with corrosive acid breath."
+  },
+  {
+    "id": "young_green_dragon",
+    "name": "Young Green Dragon",
+    "type": "dragon",
+    "size": "medium",
+    "challengeRating": 8,
+    "xpValue": 2400,
+    "stats": {
+      "strength": 17,
+      "dexterity": 10,
+      "constitution": 15,
+      "intelligence": 12,
+      "wisdom": 13,
+      "charisma": 12
+    },
+    "maxHp": 126,
+    "armorClass": 21,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "2d6+3",
+        "damageType": "piercing",
+        "toHit": 11,
+        "range": "melee"
+      },
+      {
+        "name": "Claw",
+        "damage": "1d6+1",
+        "damageType": "slashing",
+        "toHit": 11,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Poison Breath",
+        "type": "special_attack",
+        "damage": "6d6",
+        "damageType": "poison",
+        "aoe": true,
+        "saveDC": 14,
+        "saveStat": "constitution",
+        "cooldown": 3,
+        "description": "25ft cone, 6d6 poison damage"
+      },
+      {
+        "name": "Poison Immunity",
+        "type": "immunity",
+        "damageTypes": ["poison"],
+        "description": "Immune to poison damage"
+      }
+    ],
+    "lootTable": "boss",
+    "description": "A cunning young dragon with toxic breath."
+  },
+  {
+    "id": "young_red_dragon",
+    "name": "Young Red Dragon",
+    "type": "dragon",
+    "size": "large",
+    "challengeRating": 10,
+    "xpValue": 3000,
+    "stats": {
+      "strength": 23,
+      "dexterity": 10,
+      "constitution": 19,
+      "intelligence": 12,
+      "wisdom": 13,
+      "charisma": 14
+    },
+    "maxHp": 168,
+    "armorClass": 23,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "2d8+6",
+        "damageType": "piercing",
+        "toHit": 14,
+        "range": "melee"
+      },
+      {
+        "name": "Claw",
+        "damage": "1d8+3",
+        "damageType": "slashing",
+        "toHit": 14,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Fire Breath",
+        "type": "special_attack",
+        "damage": "8d10",
+        "damageType": "fire",
+        "aoe": true,
+        "saveDC": 15,
+        "saveStat": "dexterity",
+        "cooldown": 4,
+        "description": "30ft cone, 8d10 fire damage"
+      },
+      {
+        "name": "Fire Immunity",
+        "type": "immunity",
+        "damageTypes": ["fire"],
+        "description": "Immune to fire damage"
+      }
+    ],
+    "lootTable": "boss",
+    "description": "A fearsome young dragon wreathed in flames."
+  },
+  {
+    "id": "beholder",
+    "name": "Beholder",
+    "type": "aberration",
+    "size": "large",
+    "challengeRating": 13,
+    "xpValue": 4500,
+    "stats": {
+      "strength": 14,
+      "dexterity": 14,
+      "constitution": 18,
+      "intelligence": 17,
+      "wisdom": 15,
+      "charisma": 15
+    },
+    "maxHp": 93,
+    "armorClass": 26,
+    "attacks": [
+      {
+        "name": "Bite",
+        "damage": "2d4",
+        "damageType": "piercing",
+        "toHit": 7,
+        "range": "melee"
+      },
+      {
+        "name": "Eye Ray",
+        "damage": "4d6",
+        "damageType": "magical",
+        "toHit": 7,
+        "range": "medium"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Antimagic Cone",
+        "type": "flavor",
+        "description": "Central eye projects antimagic field"
+      },
+      {
+        "name": "Eye Rays",
+        "type": "special_attack",
+        "damage": "4d6",
+        "damageType": "magical",
+        "aoe": true,
+        "saveDC": 16,
+        "saveStat": "dexterity",
+        "cooldown": 2,
+        "description": "Multiple eye stalks fire devastating rays at all enemies"
+      }
+    ],
+    "lootTable": "boss",
+    "description": "A floating orb of flesh with a central eye and many eyestalks."
+  },
+  {
+    "id": "lich",
+    "name": "Lich",
+    "type": "undead",
+    "size": "medium",
+    "challengeRating": 15,
+    "xpValue": 6000,
+    "stats": {
+      "strength": 10,
+      "dexterity": 14,
+      "constitution": 10,
+      "intelligence": 20,
+      "wisdom": 16,
+      "charisma": 16
+    },
+    "maxHp": 66,
+    "armorClass": 23,
+    "attacks": [
+      {
+        "name": "Touch",
+        "damage": "1d8+5",
+        "damageType": "necrotic",
+        "toHit": 8,
+        "range": "melee"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Paralyzing Touch",
+        "type": "on_hit",
+        "effect": "stunned",
+        "saveDC": 22,
+        "saveStat": "constitution",
+        "duration": 2,
+        "description": "Touch causes paralysis (DC 22 CON save or stunned for 2 turns)"
+      },
+      {
+        "name": "Fear Aura",
+        "type": "special_attack",
+        "effect": "weakened",
+        "saveDC": 22,
+        "saveStat": "wisdom",
+        "duration": 2,
+        "aoe": true,
+        "cooldown": 3,
+        "description": "Aura of dread (DC 22 WIS save or -2 attacks for 2 turns)"
+      },
+      {
+        "name": "Finger of Death",
+        "type": "special_attack",
+        "damage": "6d6",
+        "damageType": "necrotic",
+        "aoe": false,
+        "saveDC": 17,
+        "saveStat": "constitution",
+        "cooldown": 3,
+        "description": "A ray of necrotic energy, 6d6 damage"
+      }
+    ],
+    "lootTable": "boss",
+    "description": "An undead spellcaster who achieved immortality through dark magic."
+  }
+]

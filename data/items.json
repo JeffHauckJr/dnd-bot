@@ -1,0 +1,412 @@
+{
+  "weapons": [
+    {
+      "id": "dagger",
+      "name": "Dagger",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d4",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": ["light", "finesse", "thrown"],
+      "value": 2,
+      "description": "A simple blade for close combat."
+    },
+    {
+      "id": "shortsword",
+      "name": "Shortsword",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d6",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": ["light", "finesse"],
+      "value": 10,
+      "description": "A light blade favored by rogues."
+    },
+    {
+      "id": "rapier",
+      "name": "Rapier",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": ["finesse"],
+      "value": 25,
+      "description": "An elegant thrusting sword."
+    },
+    {
+      "id": "longsword",
+      "name": "Longsword",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "slashing",
+      "toHitBonus": 0,
+      "properties": ["versatile"],
+      "value": 15,
+      "description": "A versatile blade for skilled warriors."
+    },
+    {
+      "id": "greatsword",
+      "name": "Greatsword",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "2d6",
+      "damageType": "slashing",
+      "toHitBonus": 0,
+      "properties": ["two-handed", "heavy"],
+      "value": 50,
+      "description": "A large two-handed sword."
+    },
+    {
+      "id": "battleaxe",
+      "name": "Battleaxe",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "slashing",
+      "toHitBonus": 0,
+      "properties": ["versatile"],
+      "value": 10,
+      "description": "A sturdy axe for battle."
+    },
+    {
+      "id": "greataxe",
+      "name": "Greataxe",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d12",
+      "damageType": "slashing",
+      "toHitBonus": 0,
+      "properties": ["two-handed", "heavy"],
+      "value": 20,
+      "description": "A massive axe that requires two hands."
+    },
+    {
+      "id": "handaxe",
+      "name": "Handaxe",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d6",
+      "damageType": "slashing",
+      "toHitBonus": 0,
+      "properties": ["light", "thrown"],
+      "value": 5,
+      "description": "A small throwing axe."
+    },
+    {
+      "id": "warhammer",
+      "name": "Warhammer",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "bludgeoning",
+      "toHitBonus": 0,
+      "properties": ["versatile"],
+      "value": 15,
+      "description": "A heavy hammer for crushing foes."
+    },
+    {
+      "id": "mace",
+      "name": "Mace",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d6",
+      "damageType": "bludgeoning",
+      "toHitBonus": 0,
+      "properties": [],
+      "value": 5,
+      "description": "A simple bludgeoning weapon."
+    },
+    {
+      "id": "morningstar",
+      "name": "Morningstar",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": [],
+      "value": 15,
+      "description": "A spiked mace that deals piercing damage."
+    },
+    {
+      "id": "quarterstaff",
+      "name": "Quarterstaff",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d6",
+      "damageType": "bludgeoning",
+      "toHitBonus": 0,
+      "properties": ["versatile"],
+      "value": 1,
+      "description": "A simple wooden staff."
+    },
+    {
+      "id": "shortbow",
+      "name": "Shortbow",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d6",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": ["ranged", "two-handed"],
+      "value": 30,
+      "description": "A compact bow for ranged attacks."
+    },
+    {
+      "id": "longbow",
+      "name": "Longbow",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": ["ranged", "two-handed", "heavy"],
+      "value": 75,
+      "description": "A powerful bow with excellent range."
+    },
+    {
+      "id": "light_crossbow",
+      "name": "Light Crossbow",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8",
+      "damageType": "piercing",
+      "toHitBonus": 0,
+      "properties": ["ranged", "two-handed", "loading"],
+      "value": 35,
+      "description": "A mechanical ranged weapon."
+    },
+    {
+      "id": "flaming_sword",
+      "name": "Flaming Longsword",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "1d8+1d6",
+      "damageType": "slashing",
+      "bonusDamageType": "fire",
+      "toHitBonus": 1,
+      "properties": ["versatile", "magical"],
+      "value": 500,
+      "rarity": "rare",
+      "description": "A magical blade wreathed in flames."
+    },
+    {
+      "id": "vorpal_blade",
+      "name": "Vorpal Blade",
+      "type": "weapon",
+      "slot": "weapon",
+      "damage": "2d6+2",
+      "damageType": "slashing",
+      "toHitBonus": 3,
+      "properties": ["two-handed", "magical", "vorpal"],
+      "value": 5000,
+      "rarity": "legendary",
+      "description": "A legendary blade that can sever heads on a critical hit."
+    }
+  ],
+  "armor": [
+    {
+      "id": "robes",
+      "name": "Robes",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 0,
+      "maxDexBonus": 99,
+      "value": 5,
+      "description": "Simple cloth robes offering no protection."
+    },
+    {
+      "id": "padded_armor",
+      "name": "Padded Armor",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 1,
+      "maxDexBonus": 8,
+      "value": 5,
+      "description": "Quilted layers of cloth and batting."
+    },
+    {
+      "id": "leather_armor",
+      "name": "Leather Armor",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 2,
+      "maxDexBonus": 6,
+      "value": 10,
+      "description": "Light armor made of hardened leather."
+    },
+    {
+      "id": "hide_armor",
+      "name": "Hide Armor",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 3,
+      "maxDexBonus": 4,
+      "value": 15,
+      "description": "Crude armor made from thick animal hides."
+    },
+    {
+      "id": "studded_leather",
+      "name": "Studded Leather",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 3,
+      "maxDexBonus": 5,
+      "value": 25,
+      "description": "Leather armor reinforced with metal studs."
+    },
+    {
+      "id": "chain_shirt",
+      "name": "Chain Shirt",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 4,
+      "maxDexBonus": 4,
+      "value": 100,
+      "description": "A shirt of interlocking metal rings."
+    },
+    {
+      "id": "scale_mail",
+      "name": "Scale Mail",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 4,
+      "maxDexBonus": 3,
+      "value": 50,
+      "description": "Overlapping metal scales on a leather backing."
+    },
+    {
+      "id": "chainmail",
+      "name": "Chain Mail",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 5,
+      "maxDexBonus": 2,
+      "value": 150,
+      "description": "Full chainmail offering solid protection."
+    },
+    {
+      "id": "plate_armor",
+      "name": "Plate Armor",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 8,
+      "maxDexBonus": 1,
+      "value": 1500,
+      "description": "Full plate armor offering maximum protection."
+    },
+    {
+      "id": "dragon_scale_armor",
+      "name": "Dragon Scale Armor",
+      "type": "armor",
+      "slot": "armor",
+      "acBonus": 7,
+      "maxDexBonus": 3,
+      "resistances": ["fire"],
+      "value": 3000,
+      "rarity": "rare",
+      "description": "Armor crafted from the scales of a red dragon."
+    }
+  ],
+  "accessories": [
+    {
+      "id": "ring_protection",
+      "name": "Ring of Protection",
+      "type": "accessory",
+      "slot": "accessory",
+      "acBonus": 1,
+      "value": 200,
+      "rarity": "uncommon",
+      "description": "A magical ring that provides a deflection bonus to AC."
+    },
+    {
+      "id": "ring_regeneration",
+      "name": "Ring of Regeneration",
+      "type": "accessory",
+      "slot": "accessory",
+      "effect": { "type": "regen", "amount": 1 },
+      "value": 1500,
+      "rarity": "rare",
+      "description": "Regenerates 1 HP at the start of each turn."
+    },
+    {
+      "id": "amulet_vitality",
+      "name": "Amulet of Health",
+      "type": "accessory",
+      "slot": "accessory",
+      "statBonus": { "constitution": 2 },
+      "value": 400,
+      "rarity": "uncommon",
+      "description": "Increases Constitution by 2."
+    },
+    {
+      "id": "boots_speed",
+      "name": "Boots of Speed",
+      "type": "accessory",
+      "slot": "accessory",
+      "initiativeBonus": 4,
+      "value": 500,
+      "rarity": "rare",
+      "description": "Grants +4 to initiative rolls."
+    },
+    {
+      "id": "gauntlets_strength",
+      "name": "Gauntlets of Ogre Power",
+      "type": "accessory",
+      "slot": "accessory",
+      "statBonus": { "strength": 2 },
+      "value": 400,
+      "rarity": "rare",
+      "description": "Increases Strength by 2."
+    }
+  ],
+  "consumables": [
+    {
+      "id": "health_potion_small",
+      "name": "Potion of Healing",
+      "type": "consumable",
+      "effect": { "type": "heal", "amount": "2d4+2" },
+      "value": 50,
+      "description": "Restores 2d4+2 hit points."
+    },
+    {
+      "id": "health_potion_medium",
+      "name": "Potion of Greater Healing",
+      "type": "consumable",
+      "effect": { "type": "heal", "amount": "4d4+4" },
+      "value": 150,
+      "rarity": "uncommon",
+      "description": "Restores 4d4+4 hit points."
+    },
+    {
+      "id": "health_potion_large",
+      "name": "Potion of Superior Healing",
+      "type": "consumable",
+      "effect": { "type": "heal", "amount": "8d4+8" },
+      "value": 500,
+      "rarity": "rare",
+      "description": "Restores 8d4+8 hit points."
+    },
+    {
+      "id": "antidote",
+      "name": "Antidote",
+      "type": "consumable",
+      "effect": { "type": "cure", "condition": "poisoned" },
+      "value": 50,
+      "description": "Cures poison."
+    },
+    {
+      "id": "scroll_fireball",
+      "name": "Scroll of Fireball",
+      "type": "consumable",
+      "effect": { "type": "damage", "amount": "6d6", "damageType": "fire", "aoe": true },
+      "value": 200,
+      "rarity": "uncommon",
+      "description": "Casts Fireball dealing 6d6 fire damage to all enemies."
+    }
+  ]
+}
