@@ -114,11 +114,13 @@ async function startPlayback(msg, queue, voiceChannel) {
         console.log(`[yt-dlp] Starting stream for: ${song.url}`);
 
         // Pipe yt-dlp directly to ffmpeg to avoid URL expiration issues
+        // Use android client to bypass 403 errors from datacenter IPs
         const ytdlp = spawn(YTDLP_PATH, [
             '-f', 'bestaudio/best',
             '-o', '-',
             '--no-warnings',
             '--no-playlist',
+            '--extractor-args', 'youtube:player_client=android',
             song.url,
         ], { stdio: ['ignore', 'pipe', 'pipe'] });
 

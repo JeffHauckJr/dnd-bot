@@ -1,4 +1,4 @@
-FROM node:18-bullseye
+FROM node:20-bookworm
 
 # Avoid interactive prompts and broken mirrors
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,11 +8,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         python3 \
         python3-pip \
+        python3-venv \
         ffmpeg \
         ca-certificates \
         curl \
         gnupg \
-        && pip3 install --no-cache-dir yt-dlp \
+        && python3 -m pip install --no-cache-dir --break-system-packages yt-dlp \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
