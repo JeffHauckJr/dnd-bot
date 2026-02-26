@@ -6,12 +6,11 @@ const {
     entersState,
     StreamType,
 } = require('@discordjs/voice');
-const { spawn, execFile } = require('child_process');
+const { spawn } = require('child_process');
 const { initQueue } = require('../utils/musicQueue');
 
 const YTDLP_PATH = 'yt-dlp';
 const FFMPEG_PATH = require('ffmpeg-static');
-const YTDLP_COMMON = ['--no-warnings', '--no-playlist'];
 
 module.exports = async function playYtdlp(msg) {
     const args = msg.content.trim().split(" ");
@@ -29,22 +28,17 @@ module.exports = async function playYtdlp(msg) {
     const guildId = msg.guild.id;
     const queue = initQueue(guildId);
 
-    // Reply immediately so the user knows the bot is working
+    // Get title first
     msg.reply(`Loading song...`);
 
-    // Get title + stream URL in one yt-dlp call
     let title = url;
-    let streamUrl;
     try {
-        const info = await getSongInfo(url);
-        title = info.title || url;
-        streamUrl = info.streamUrl;
+        title = await getTitle(url);
     } catch (e) {
-        console.error('[yt-dlp] Info fetch error:', e.message);
-        return msg.channel.send(`Failed to load: ${e.message}`);
+        console.error('[yt-dlp] Title fetch error:', e.message);
     }
 
-    queue.songs.push({ url, title, streamUrl, requestedBy: msg.author.username });
+    queue.songs.push({ url, title, requestedBy: msg.author.username });
     msg.channel.send(`Added to queue: **${title}** (requested by ${msg.author.username})`);
 
     if (queue.songs.length === 1) {
@@ -52,15 +46,12 @@ module.exports = async function playYtdlp(msg) {
     }
 };
 
-function getSongInfo(url) {
+function getTitle(url) {
     return new Promise((resolve, reject) => {
-        // Single call: get title + stream URL at once
-        // Use flexible format: prefer audio, fall back to best available
         const proc = spawn(YTDLP_PATH, [
-            '-f', 'bestaudio[ext=m4a]/bestaudio/best',
             '--print', '%(title)s',
-            '--print', '%(url)s',
-            ...YTDLP_COMMON,
+            '--no-warnings',
+            '--no-playlist',
             url,
         ]);
         let output = '';
@@ -69,15 +60,7 @@ function getSongInfo(url) {
         proc.stderr.on('data', (data) => { errorOutput += data.toString(); });
         proc.on('close', (code) => {
             if (code === 0 && output.trim()) {
-                const lines = output.trim().split('\n');
-                // Line 0 = title, Line 1 = stream URL
-                const title = lines[0]?.trim() || url;
-                const streamUrl = lines[1]?.trim();
-                if (!streamUrl || !streamUrl.startsWith('http')) {
-                    reject(new Error('Failed to get stream URL'));
-                    return;
-                }
-                resolve({ streamUrl, title });
+                resolve(output.trim().split('\n')[0]);
             } else {
                 reject(new Error(`yt-dlp failed (code ${code}): ${errorOutput.slice(-200)}`));
             }
@@ -125,47 +108,57 @@ async function startPlayback(msg, queue, voiceChannel) {
     // Remove previous listeners to prevent accumulation
     queue.player.removeAllListeners(AudioPlayerStatus.Idle);
     queue.player.removeAllListeners('error');
-    queue.player.removeAllListeners('stateChange');
     queue.intentionalStop = false;
 
     try {
-        // If we don't have a stream URL yet (e.g. queued before change), fetch it
-        if (!song.streamUrl) {
-            console.log(`[yt-dlp] Getting stream URL for: ${song.url}`);
-            const info = await getSongInfo(song.url);
-            song.streamUrl = info.streamUrl;
-        }
-        console.log(`[yt-dlp] Piping HLS stream through ffmpeg`);
-        const streamUrl = song.streamUrl;
+        console.log(`[yt-dlp] Starting stream for: ${song.url}`);
 
-        // Step 2: Pipe the HLS stream through ffmpeg to get raw audio
-        const ffmpeg = spawn(FFMPEG_PATH, [
-            '-reconnect', '1',
-            '-reconnect_streamed', '1',
-            '-reconnect_delay_max', '5',
-            '-i', streamUrl,
-            '-vn',              // no video
-            '-acodec', 'libopus',
-            '-f', 'opus',       // output opus
-            '-ar', '48000',     // 48kHz (Discord standard)
-            '-ac', '2',         // stereo
-            '-b:a', '128k',
-            'pipe:1',           // output to stdout
+        // Pipe yt-dlp directly to ffmpeg to avoid URL expiration issues
+        const ytdlp = spawn(YTDLP_PATH, [
+            '-f', 'bestaudio/best',
+            '-o', '-',
+            '--no-warnings',
+            '--no-playlist',
+            song.url,
         ], { stdio: ['ignore', 'pipe', 'pipe'] });
 
-        queue.currentProcess = ffmpeg;
+        const ffmpeg = spawn(FFMPEG_PATH, [
+            '-i', 'pipe:0',
+            '-vn',
+            '-acodec', 'libopus',
+            '-f', 'opus',
+            '-ar', '48000',
+            '-ac', '2',
+            '-b:a', '128k',
+            'pipe:1',
+        ], { stdio: ['pipe', 'pipe', 'pipe'] });
+
+        // Pipe yt-dlp stdout to ffmpeg stdin
+        ytdlp.stdout.pipe(ffmpeg.stdin);
+
+        ytdlp.stderr.on('data', (data) => {
+            const line = data.toString().trim();
+            if (line && !line.startsWith('[download]')) {
+                console.log(`[yt-dlp] ${line}`);
+            }
+        });
+
+        ytdlp.on('error', (err) => {
+            console.error('[yt-dlp] Process error:', err.message);
+        });
 
         ffmpeg.stderr.on('data', (data) => {
             const line = data.toString().trim();
-            // Only log errors, not the usual ffmpeg progress
             if (line.includes('Error') || line.includes('error') || line.includes('Invalid')) {
-                console.error(`[ffmpeg]`, line);
+                console.error(`[ffmpeg] ${line}`);
             }
         });
 
         ffmpeg.on('error', (err) => {
             console.error('[ffmpeg] Process error:', err.message);
         });
+
+        queue.currentProcess = { ytdlp, ffmpeg };
 
         const resource = createAudioResource(ffmpeg.stdout, {
             inputType: StreamType.OggOpus,
@@ -187,7 +180,11 @@ async function startPlayback(msg, queue, voiceChannel) {
     }
 
     queue.player.once(AudioPlayerStatus.Idle, () => {
-        queue.currentProcess = null;
+        if (queue.currentProcess) {
+            queue.currentProcess.ytdlp?.kill();
+            queue.currentProcess.ffmpeg?.kill();
+            queue.currentProcess = null;
+        }
         queue.songs.shift();
         if (queue.songs.length > 0) {
             startPlayback(msg, queue, voiceChannel);
@@ -201,7 +198,8 @@ async function startPlayback(msg, queue, voiceChannel) {
         console.error('[Player] Playback error:', error);
         msg.channel.send(`Playback error: ${error.message}. Skipping...`);
         if (queue.currentProcess) {
-            queue.currentProcess.kill();
+            queue.currentProcess.ytdlp?.kill();
+            queue.currentProcess.ffmpeg?.kill();
             queue.currentProcess = null;
         }
         queue.songs.shift();
