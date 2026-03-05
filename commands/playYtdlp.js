@@ -114,11 +114,14 @@ async function startPlayback(msg, queue, voiceChannel) {
         console.log(`[yt-dlp] Starting stream for: ${song.url}`);
 
         // Pipe yt-dlp directly to ffmpeg to avoid URL expiration issues
+        // Use explicit POT provider config and verbose output for debugging
         const ytdlp = spawn(YTDLP_PATH, [
             '-f', 'ba/b',  // best audio, fallback to best anything
             '-o', '-',
             '--no-warnings',
             '--no-playlist',
+            '--extractor-args', 'youtube:getpot_bgutil_baseurl=http://127.0.0.1:4416',
+            '-v',  // verbose for debugging
             song.url,
         ], { stdio: ['ignore', 'pipe', 'pipe'] });
 
@@ -136,9 +139,27 @@ async function startPlayback(msg, queue, voiceChannel) {
         // Pipe yt-dlp stdout to ffmpeg stdin
         ytdlp.stdout.pipe(ffmpeg.stdin);
 
+        // Track data flow for debugging
+        let ytdlpBytes = 0;
+        let ffmpegOutBytes = 0;
+
+        ytdlp.stdout.on('data', (chunk) => {
+            ytdlpBytes += chunk.length;
+            if (ytdlpBytes % (100 * 1024) < chunk.length) {
+                console.log(`[yt-dlp] Downloaded: ${Math.round(ytdlpBytes / 1024)} KB`);
+            }
+        });
+
+        ffmpeg.stdout.on('data', (chunk) => {
+            ffmpegOutBytes += chunk.length;
+            if (ffmpegOutBytes % (100 * 1024) < chunk.length) {
+                console.log(`[ffmpeg] Output: ${Math.round(ffmpegOutBytes / 1024)} KB`);
+            }
+        });
+
         ytdlp.stderr.on('data', (data) => {
             const line = data.toString().trim();
-            if (line && !line.startsWith('[download]')) {
+            if (line) {
                 console.log(`[yt-dlp] ${line}`);
             }
         });
@@ -146,6 +167,28 @@ async function startPlayback(msg, queue, voiceChannel) {
         ytdlp.on('error', (err) => {
             console.error('[yt-dlp] Process error:', err.message);
         });
+
+        ytdlp.on('close', (code) => {
+            console.log(`[yt-dlp] Process exited with code ${code}, downloaded ${Math.round(ytdlpBytes / 1024)} KB`);
+            if (code !== 0 && ytdlpBytes === 0) {
+                console.error('[yt-dlp] Download failed - no data received');
+            }
+        });
+
+        // Timeout for stalled downloads (30 seconds without data)
+        let lastDataTime = Date.now();
+        const stallCheckInterval = setInterval(() => {
+            const elapsed = Date.now() - lastDataTime;
+            if (elapsed > 30000 && ytdlpBytes === 0) {
+                console.error('[yt-dlp] Download stalled - no data for 30s, killing process');
+                clearInterval(stallCheckInterval);
+                ytdlp.kill();
+                ffmpeg.kill();
+            }
+        }, 5000);
+
+        ytdlp.stdout.on('data', () => { lastDataTime = Date.now(); });
+        ytdlp.on('close', () => clearInterval(stallCheckInterval));
 
         ffmpeg.stderr.on('data', (data) => {
             const line = data.toString().trim();

@@ -43,7 +43,8 @@ ENV NODE_ENV=production
 ENV PyPath=python3
 
 # Create startup script that runs POT server and bot
-RUN echo '#!/bin/bash\nnode /pot-provider/server/build/main.js &\nsleep 2\nnode app.js' > /start.sh && \
+# Give POT server 5 seconds to fully initialize before starting bot
+RUN echo '#!/bin/bash\necho "Starting POT server..."\nnode /pot-provider/server/build/main.js &\necho "Waiting for POT server to initialize..."\nsleep 5\necho "Starting bot..."\nnode app.js' > /start.sh && \
     chmod +x /start.sh
 
 # Start both services
