@@ -115,8 +115,9 @@ async function startPlayback(msg, queue, voiceChannel) {
 
         // Pipe yt-dlp directly to ffmpeg to avoid URL expiration issues
         // Use android client to bypass 403 errors from datacenter IPs
+        // Prefer audio-only formats (m4a/webm) which stream faster than full video
         const ytdlp = spawn(YTDLP_PATH, [
-            '-f', 'bestaudio/best',
+            '-f', 'bestaudio[ext=m4a]/bestaudio[ext=webm]/bestaudio/best',
             '-o', '-',
             '--no-warnings',
             '--no-playlist',
