@@ -1,9 +1,9 @@
 FROM node:20-bookworm
 
-# Avoid interactive prompts and broken mirrors
+# Avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update and install packages safely
+# Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         python3 \
@@ -13,22 +13,38 @@ RUN apt-get update && \
         ca-certificates \
         curl \
         gnupg \
-        && python3 -m pip install --no-cache-dir --break-system-packages yt-dlp \
+        git \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
+# Install yt-dlp and the POT provider plugin
+RUN python3 -m pip install --no-cache-dir --break-system-packages \
+    yt-dlp \
+    bgutil-ytdlp-pot-provider
+
+# Set up POT provider server
+WORKDIR /pot-provider
+RUN git clone --single-branch --depth 1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git . && \
+    cd server && \
+    npm install && \
+    npx tsc
+
+# Set working directory for the bot
 WORKDIR /app
 
-# Copy files into container
+# Copy bot files
 COPY . .
 
 # Install Node.js dependencies
 RUN npm install
 
-# Environment variables (override via Railway dashboard if needed)
+# Environment variables
 ENV NODE_ENV=production
 ENV PyPath=python3
 
-# Start the bot
-CMD ["node", "app.js"]
+# Create startup script that runs POT server and bot
+RUN echo '#!/bin/bash\nnode /pot-provider/server/build/main.js &\nsleep 2\nnode app.js' > /start.sh && \
+    chmod +x /start.sh
+
+# Start both services
+CMD ["/start.sh"]
