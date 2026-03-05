@@ -12,7 +12,8 @@ module.exports = function skipSong(msg) {
     if (queue.player.state.status === AudioPlayerStatus.Playing || queue.player.state.status === AudioPlayerStatus.Idle) {
         queue.intentionalStop = true;
         if (queue.currentProcess) {
-            queue.currentProcess.kill();
+            queue.currentProcess.ytdlp?.kill();
+            queue.currentProcess.ffmpeg?.kill();
             queue.currentProcess = null;
         }
         queue.player.stop();

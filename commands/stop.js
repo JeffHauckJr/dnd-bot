@@ -10,7 +10,8 @@ module.exports = function stopMusic(msg) {
 
     queue.intentionalStop = true;
     if (queue.currentProcess) {
-        queue.currentProcess.kill();
+        queue.currentProcess.ytdlp?.kill();
+        queue.currentProcess.ffmpeg?.kill();
         queue.currentProcess = null;
     }
     queue.player.stop();
