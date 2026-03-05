@@ -114,13 +114,11 @@ async function startPlayback(msg, queue, voiceChannel) {
         console.log(`[yt-dlp] Starting stream for: ${song.url}`);
 
         // Pipe yt-dlp directly to ffmpeg to avoid URL expiration issues
-        // Use ios client which has better audio format availability
         const ytdlp = spawn(YTDLP_PATH, [
-            '-f', 'bestaudio[ext=m4a]/bestaudio/best',
+            '-f', 'ba/b',  // best audio, fallback to best anything
             '-o', '-',
             '--no-warnings',
             '--no-playlist',
-            '--extractor-args', 'youtube:player_client=ios',
             song.url,
         ], { stdio: ['ignore', 'pipe', 'pipe'] });
 
