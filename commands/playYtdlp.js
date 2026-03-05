@@ -114,14 +114,13 @@ async function startPlayback(msg, queue, voiceChannel) {
         console.log(`[yt-dlp] Starting stream for: ${song.url}`);
 
         // Pipe yt-dlp directly to ffmpeg to avoid URL expiration issues
-        // Use android client to bypass 403 errors from datacenter IPs
-        // Prefer audio-only formats (m4a/webm) which stream faster than full video
+        // Use ios client which has better audio format availability
         const ytdlp = spawn(YTDLP_PATH, [
-            '-f', 'bestaudio[ext=m4a]/bestaudio[ext=webm]/bestaudio/best',
+            '-f', 'bestaudio[ext=m4a]/bestaudio/best',
             '-o', '-',
             '--no-warnings',
             '--no-playlist',
-            '--extractor-args', 'youtube:player_client=android',
+            '--extractor-args', 'youtube:player_client=ios',
             song.url,
         ], { stdio: ['ignore', 'pipe', 'pipe'] });
 
