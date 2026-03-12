@@ -12,13 +12,7 @@ const alignmentFunction = require("./commands/alignment")
 const encounterFunction = require("./commands/encounter")
 const magicFunction = require("./commands/magic")
 const rulesFunction = require("./commands/rules")
-const stopMusic = require("./commands/stop");
-const playLocal = require("./commands/playlocal");
-const playYtdlp = require("./commands/playYtdlp");
-const showQueue = require("./commands/queue");
-const skipSong = require("./commands/skip")
-const recordVoice = require("./commands/recordvoice");
-const stopRecord = require("./commands/stoprecord");
+// Music commands removed - handled by separate local music bot
 const crawlCommand = require("./commands/crawl");
 
 module.exports = async (msg) => {
@@ -80,33 +74,7 @@ module.exports = async (msg) => {
     rulesFunction(msg)
   }
 
-  if (command === "stop") {
-    stopMusic(msg);
-  }
-
-  if (command === "playlocal") {
-    playLocal(msg);
-  }
-
-  if (command === "ytplay") {
-    playYtdlp(msg);
-  }
-
-  if (command === "queue") {
-    showQueue(msg);
-  }
-
-  if (command === "skip") {
-    skipSong(msg);
-  }
-
-  if (command === "recordvoice") {
-    recordVoice(msg);
-  }
-
-  if (command === "stoprecord") {
-    stopRecord(msg);
-  }
+  // Music commands (play, stop, skip, queue) handled by separate local music bot
 
   if (command === "crawl") {
     crawlCommand(msg);
